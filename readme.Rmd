@@ -7,7 +7,7 @@ output: github_document
 
 
 <div style = "padding: 2em;">
-<img src="https://github.com/masurp/specr/raw/master/man/figures/README-unnamed-chunk-2-1.png" width = 280 align="right" />
+<img src="https://github.com/masurp/specr/raw/master/man/figures/README-unnamed-chunk-2-1.png" width = 380 align="right" />
 </div> Welcome to the workshop on *Multiverse Analysis in R*. This page will be used to distribute the slides, handouts, and other materials for this course. All material is free to re-use under the [CC-BY](https://github.com/masurp/workshop_bayes/blob/main/LICENSE.md) license.
 
 Empirical results depend on the conceptual and analytical choices made by the researcher. For example, researchers need to decide how variables should be operationalized and estimated, which variables to control for, which observations to exclude, what to do with missing values, which functional form to assume, which subgroups to analyse, what model to choose and so on. When interpreting study outcomes, we seek genuine insights into the underlying relationships under scrutiny. Achieving this goal hinges on the premise that reported analyses accurately represent the pool of valid analyses that could have been conducted – a condition frequently unmet. One issue is that published results may hinge upon arbitrary decisions made by researchers. Another concern is the inclination of researchers to favor evidence that aligns with their assumptions rather than presenting contrary evidence. 
@@ -63,8 +63,5 @@ tribble(
 <br><br>
 <hr>
 
-<p style = "margin-left: auto; margin-right: 0;">
-This course is published under the following [license](https://github.com/masurp/workshop_bayes/blob/main/LICENSE.md). 
-</p>
-
+This course is published under the following [license](https://github.com/masurp/workshop_specr/blob/main/LICENSE). 
 

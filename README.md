@@ -3,7 +3,7 @@ Multiverse Analysis in R
 
 <div style="padding: 2em;">
 
-<img src="https://github.com/masurp/specr/raw/master/man/figures/README-unnamed-chunk-2-1.png" width = 280 align="right" />
+<img src="https://github.com/masurp/specr/raw/master/man/figures/README-unnamed-chunk-2-1.png" width = 380 align="right" />
 
 </div>
 
@@ -90,7 +90,6 @@ For this 2-day workshop, I expect you…
 
 <br><br>
 <hr>
-<p style="margin-left: auto; margin-right: 0;">
+
 This course is published under the following
-[license](https://github.com/masurp/workshop_bayes/blob/main/LICENSE.md).
-</p>
+[license](https://github.com/masurp/workshop_specr/blob/main/LICENSE).
