@@ -57,15 +57,18 @@ RStudio is an asset.
 
 ## Preparation
 
-For this 2-day workshop, I expect you…
+For this 1-day workshop, I expect you…
 
 1.  to have R and RStudio installed. If you haven’t done so yet, have a
     look at this [getting
     started](https://github.com/ccs-amsterdam/r-course-material/blob/master/tutorials/R_basics_1_getting_started.md)
     tutorial, which walks you through the installation and helps you get
-    some first hands-on experience using R. You do not need to install
-    the packages that we will use in the workship yet. We will install
-    those together in the workshop.
+    some first hands-on experience using R. If possible, try to install
+    the R package `specr`, which we will use to run multiverse analyses:
+
+``` r
+install.packages("specr")
+```
 
 2.  to have some basic knowledge of R and particularly data wrangling
     skills (at best, some knowledge about the `tidyverse`). If this is
@@ -76,13 +79,8 @@ For this 2-day workshop, I expect you…
     on transforming, summarizing, visualizing and reshaping data in the
     “data wrangling with the tidyverse” category.
 
-3.  a good understanding of descriptive statistics (distributions,
-    parameters of central tendency) and frequentist inference (standard
-    error, p-value, confidence intervals).
-
-4.  some basic knowledge of regression models (e.g., linear regression,
-    logistic regression, multilevel linear regression). In the practical
-    part of the workshop, we will fit such models in R.
+3.  some basic knowledge of regression models (e.g., linear regression,
+    logistic regression, multilevel linear regression).
 
 **Note:** The workshop will NOT provide an introduction to R!
 
