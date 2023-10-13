@@ -1,0 +1,98 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;500');
+
+$font-family-sans-serif: "Roboto Condensed", sans-serif !default;
+$presentation-font-size-root: 27px;
+
+// headings
+$presentation-heading-font: "Roboto", sans-serif !default;
+$presentation-heading-font-weight: 500 Bold !default;
+
+
+$presentation-h1-font-size: 1.9em !default;
+$presentation-h2-font-size: 1.5em !default;
+$presentation-h3-font-size: 1.1em !default;
+
+// code
+$code-block-font-size: .45em;
+
+.reveal div.sourceCode, .reveal pre code {
+//  background-color: $main-color !important;
+}
+
+.reveal div.sourceCode {
+  margin-bottom: 10px !important;
+}
+
+/*-- scss:rules --*/
+
+.reveal h1.title {
+  margin-bottom:1em;
+  margin-top:1em;
+  color: var(--r-main-color);
+  text-align:left;
+  padding:0;
+  margin-left:0;
+}
+
+.reveal h2 {
+  margin-bottom:1em;
+  text-transform: uppercase;
+}
+
+p.subtitle {
+  font-size: var(--r-heading3-size);
+}
+
+p.author, p.date, p.subtitle {
+  margin-bottom:.75em;
+  text-align: left; }
+
+.reveal table {
+  margin:0;
+}
+
+.reveal .slide-number {
+  font-family: var(--r-heading-font);
+}
+
+
+// colors
+
+:root {
+  --r--main-color: #0089CF
+  --r-link-color: #0089CF;
+  --r-heading-color: #0089CF;
+}
+
+
+.reveal .slide-logo {
+  height: 7.5% !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+// zoom-in effect
+
+img:hover {
+    transform:scale(1.5);
+    -ms-transform:scale(1.5); /* IE 9 */
+    -moz-transform:scale(1.5); /* Firefox */
+    -webkit-transform:scale(1.5); /* Safari and Chrome */
+    -webkit-transition: transform 30s ease-in-out;
+    -o-transform:scale(1.5); /* Opera */
+}
+
+.centered h1 {
+  text-align: center;
+}
+
+.output {
+  color: blue;
+  max-height: 600px; /* can change this */
+  max-width: 1200px; /* doesn't seem to have any effect */
+  overflow: auto;
+  background: #f0f0f5;
+}
