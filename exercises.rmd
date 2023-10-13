@@ -1,0 +1,21 @@
+---
+title: "Exercises & Material"
+output: html_document
+---
+
+
+On this page, you will all relevant materials for the workshop. The procedure is straight-forward: Click on the respective exercise below. This will open the exercise which contains a markdown document that includes comments and R code chunks that we will go through together. 
+
+| Exercise | Topic |
+|:--|:-----|
+| Exercise I | [Basic Mechanisms of Specification Curve Analysis](https://github.com/masurp/workshop_specr/blob/main/tutorials/tutorial_01.md) |
+| Exercise II | [Multiverse Analysis with specr](https://github.com/masurp/workshop_specr/blob/main/tutorials/tutorial_02.md) |
+| Exercise III | [Advanced Specifications](https://github.com/masurp/workshop_specr/blob/main/tutorials/tutorial_03.md) |
+
+
+<br><br>
+<hr>
+
+<p style = "margin-left: auto; margin-right: 0;">
+This course is published under the following [license](https://github.com/masurp/workshop_bayes/blob/main/LICENSE.md). 
+</p>
