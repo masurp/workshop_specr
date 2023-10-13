@@ -1,0 +1,30 @@
+---
+title: 'Advanced Specifications'
+subtitle: 'Exercise III'
+author: "Philipp Masur"
+date: "2023-10"
+output: 
+  github_document:
+  toc: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=F, message=F}
+knitr::opts_chunk$set(echo = TRUE, results = TRUE, message = FALSE, warning = FALSE)
+library(printr)
+```
+
+
+
+
+# Introduction
+
+# Preparation
+
+```{r}
+
+```
+
+
+

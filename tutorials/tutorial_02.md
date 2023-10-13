@@ -1,0 +1,402 @@
+Multiverse Analysis with `specr`
+================
+Philipp Masur
+2023-10
+
+-   <a href="#introduction" id="toc-introduction">Introduction</a>
+-   <a href="#preparation" id="toc-preparation">Preparation</a>
+    -   <a href="#getting-data" id="toc-getting-data">Getting data</a>
+    -   <a href="#understanding-the-data-set"
+        id="toc-understanding-the-data-set">Understanding the data set</a>
+    -   <a href="#creating-variables" id="toc-creating-variables">Creating
+        variables</a>
+-   <a href="#specification-curve-analysis"
+    id="toc-specification-curve-analysis">Specification curve analysis</a>
+    -   <a href="#setting-up-specifications"
+        id="toc-setting-up-specifications">Setting up specifications</a>
+    -   <a href="#running-the-analysis" id="toc-running-the-analysis">Running
+        the analysis</a>
+    -   <a href="#visualizing-the-curve"
+        id="toc-visualizing-the-curve">Visualizing the curve</a>
+    -   <a href="#alternative-visualizations"
+        id="toc-alternative-visualizations">Alternative visualizations</a>
+    -   <a href="#summarization-techniques"
+        id="toc-summarization-techniques">Summarization techniques</a>
+-   <a href="#inference-for-specification-curve-analysis"
+    id="toc-inference-for-specification-curve-analysis">Inference for
+    specification curve analysis</a>
+    -   <a href="#rerunning-the-model-with-a-custom-function"
+        id="toc-rerunning-the-model-with-a-custom-function">Rerunning the model
+        with a custom function</a>
+    -   <a href="#resampling-under-the-null"
+        id="toc-resampling-under-the-null">Resampling under-the-null</a>
+    -   <a href="#inference-tests" id="toc-inference-tests">Inference tests</a>
+    -   <a href="#visualizing-the-inference-curve"
+        id="toc-visualizing-the-inference-curve">Visualizing the inference
+        curve</a>
+
+# Introduction
+
+This tutorial shows how to use the package `specr` to run specification
+curve analyses (SCA). The basic idea of SCA is to solve the problem that
+there always exist a large number of researcher’s degrees of freedom
+when analyzing a data set. Data are actively “shaped” during the
+transformation from raw data to analyzable form and researchers often
+apply multiple processing steps during data preparation. These steps
+involve numerous decisions, offering various, alternative options at
+each stage. Taking all of these (often arbitrary) decisions into
+account, it is important to acknowledge that they generate multiple
+versions based on the choices made — a data multiverse! The problem is
+that each dataset in this multiverse can produce different statistical
+outcomes - a statistical multiverse. To solve this problem and provide a
+systematic assessment of the resulting “garden of forking paths”, SCA
+usually consists of 2 to 3 steps:
+
+1.  Define the set of reasonable specifications to estimate
+2.  Estimate all specifications and visualize/analyze results
+3.  Conduct joint statistical tests using an inferential specification
+    curve
+
+`specr` provides easy to use function to conduct all three steps (step
+three only in the development version).
+
+# Preparation
+
+For this tutorial, we are going to load the package collection
+`tidyverse` (for data wrangling and visualization) and the package
+`specr`.
+
+``` r
+library(tidyverse)
+# install.packages("specr")
+library(specr)
+library(psych)
+```
+
+## Getting data
+
+To have some data to play around with, we are going to use data from an
+experiment by Masur, DiFranzo and Bazarova (2021) in which they studied
+the influence of the collective norm on subsequent social norm
+perceptions, and self-disclosure behavior on social media. More
+specifically, they exposed participants to social media feeds that
+varied with regard to the prevalence of visual disclosure in posts and
+profiles (3 x 3 between-subject experiment). Subsequently, participants
+reported descriptive, injunctive, and subjective norm perceptions and
+the likelihood with which they would disclose themselves visually in
+such a network.
+
+**Reference:**
+
+-   Paper: Masur, P. K., DiFranzo, D. J., & Bazarova, N. N. (2021).
+    Behavioral Contagion on Social Media: Effects of Social Norms,
+    Design Interventions, and Critical Media Literacy on
+    Self-Disclosure. PLOS One, 16(7). e0254670.
+    <https://doi.org/10.1371/journal.pone.0254670>
+-   Data and Code: <https://osf.io/qxjsp/>
+
+``` r
+d <- read.csv("https://osf.io/kfm6x/download", 
+              header = TRUE, na.strings = "NA") %>% 
+  as_tibble
+
+head(d)
+```
+
+## Understanding the data set
+
+The data set consists of the following variables:
+
+-   **condition**: What condition the participant was assigned to
+-   **norm**: First manipulation, amount of posts (in %) that included
+    visual disclosure in the feed
+-   **profile**: second manipulation, amount of profile pictures (in %)
+    that included visual disclosure
+-   **MLI\_**: Media literacy (20 items)
+-   **CRI\_**: Critical thinking disposition (9 items)
+-   **ESL_NOR\_**: Norm perceptions (1-4: descriptive, 5-8: injunctive,
+    9-1: subjective)
+-   **ESL_BEH\_**: Self-disclosure intention
+-   **Socio-Demographics**: age, gender, education,…
+
+``` r
+# Sample description
+describe(d$age)
+table(d$gender) # 0 = male, 1 = female, 2 = other
+
+# Experimental conditions
+d %>%
+  group_by(norm, profile) %>% 
+  tally                       
+
+# Variables
+names(d)
+```
+
+## Creating variables
+
+For the purpose of this tutorial, we are going to create several mean
+indices that represent the concepts of interest. For the dependent
+variable (i.e. self-disclosure intentions), we are quicky going to check
+if the scale can be improved by deleting one or two items.
+
+``` r
+alpha(d %>% select(contains("ESL_BEH")))
+```
+
+According to the reliability analysis, we could exclude item 06 to
+improve the internal consistency (alpha). We hence compute both the full
+and a reduce scale.
+
+``` r
+# Preparations
+d <- d %>%
+  mutate(descriptive_norm = rowMeans(d %>% select(ESL_NOR_01:ESL_NOR_04)),
+         injunctive_norm = rowMeans(d %>% select(ESL_NOR_05:ESL_NOR_08)),
+         subjective_norm = rowMeans(d %>% select(ESL_NOR_09:ESL_NOR_12)),
+         social_norm = rowMeans(d %>% select(contains("ESL_NOR"))),
+         self_disclosure_all = rowMeans(d %>% select(ESL_BEH_01:ESL_BEH_06)),
+         self_disclosure_red = rowMeans(d %>% select(ESL_BEH_01:ESL_BEH_05)),
+         media_literacy = rowMeans(d %>% select(contains("MLI_CRI"))),
+         critical_thinking = rowMeans(d %>% select(contains("CRI_THI"))),
+         gender = ifelse(gender > 1, NA, gender),
+         gender = factor(gender, labels = c("male", "female")))
+```
+
+# Specification curve analysis
+
+## Setting up specifications
+
+The first step of any specification curve analysis is to set up the
+specifications. In `specr`, we do this using the function `setup()`.
+There a endless way to specify different decisions (see this
+[vignette](https://masurp.github.io/specr/articles/different-specifications.html)
+for a more detailed tutorial). In this case, we are going to vary the
+type of norm perception (as independent variable), the scale measuring
+self-disclosure (as dependent variable), the covariates to include, and
+the subset analyses that we want to include. We can check the
+specifications using the generic `summary()` function.
+
+``` r
+specs <- setup(data = d,
+               x = c("descriptive_norm", "injunctive_norm", "subjective_norm", "social_norm"),
+               y = c("self_disclosure_all", "self_disclosure_red"),
+               model = "lm",
+               controls = c("media_literacy", "critical_thinking", "age"),
+               subsets = list(gender = c("male", "female")))
+summary(specs)
+```
+
+The output contains quite some information about our specification setup
+such as the number of specification (192), the decisions involved, the
+function used to extract parameters (could be changed) and also shows
+the first 6 specifications in the specification table.
+
+## Running the analysis
+
+To estimate all models, we simply use the function `specr()` around this
+specification object. Depending on the complexity of the estimations and
+the size of the data set, this can take a while (parallization is
+possible, see this
+[vignette](https://masurp.github.io/specr/articles/parallelization.html)).
+We again can explore the results using the generic `summary()` function.
+
+``` r
+results <- specr(specs)
+summary(results)
+```
+
+We can see that across all 192 specifications, the resulting median
+coefficient for the relationship between social norm perceptions and
+self-disclosure intention is Mdn = 0.54 (MAD = 0.06). We further see
+that sample sizes ranged from 254 to 670 (bear in mind that the
+specifications include subset analyses).
+
+## Visualizing the curve
+
+Most commonly, specification curve analysis are reported using a
+visualization. We can obtain this visualization (a combination of the
+specification curve and the choice panel) with the generic `plot()`
+function.
+
+``` r
+plot(results)
+```
+
+We can customize the appearance of this plot in many ways:
+
+``` r
+a <- plot(results, type = "curve", ribbon = T, ci = F)
+b <- plot(results, type = "choices", choices = c("x", "y", "controls", "subsets"))
+c <- plot(results, type = "samplesizes")
+
+# Combine plots
+plot_grid(a, b, c,
+          nrow = 3, axis = "tblr",
+          align = "hv", 
+          rel_heights = c(1, 2, .75))
+```
+
+**Exercise:** Can you plot a similar plot that looks at the
+distributions of r-square instead of the estimate? Use the help function
+for `?plot.specr.object` if necessary.
+
+``` r
+# Code here
+```
+
+## Alternative visualizations
+
+Despite the prominence of this visualization in the literature, we can
+visualize our results in various other ways. After all, the result is
+just a distribution of effect sizes (and their 95% confidence
+intervals).
+
+``` r
+# Box plot visualization
+plot(results, type = "boxplot")
+
+# Density distributions
+library(ggridges)
+results %>%
+  as_tibble %>%
+  ggplot(aes(x = estimate, y = x)) +
+  geom_density_ridges2(aes(fill = y), alpha = .5, scale = .6) +
+  theme_minimal()
+```
+
+## Summarization techniques
+
+Descriptively, we can also summarize the effect size distribution using
+the generic `summary()` function.
+
+``` r
+summary(results, type = "curve")
+summary(results, type = "curve", group = "x")
+summary(results, type = "curve", group = c("x", "y"))
+summary(results, type = "curve", group = "controls",
+        stats = list(mean = mean, 
+                     median = median))
+```
+
+# Inference for specification curve analysis
+
+If we are convinced that our specifications represent a meaningful
+sample of the entire set of reasonable, non-redundant specifications, we
+can also run inference tests on the specification curve. To do this, we
+need to install the development version of `specr`.
+
+## Rerunning the model with a custom function
+
+First, we have to rerun the specification curve with a custom extract
+function to make sure that we get the entire model object from each
+specification (and not just the parameter of interest).
+
+``` r
+# Install development version
+# devtools::install_github("masurp/specr")  
+# library(specr)
+
+# Custom function
+tidy_new <- function(x) {
+  fit <- broom::tidy(x, conf.int = TRUE)
+  fit$res <- list(x)  # Store model object
+  return(fit)
+}
+
+# Setup with function
+specs <- setup(data = d,
+               x = c("descriptive_norm", "injunctive_norm", "subjective_norm", "social_norm"),
+               y = c("self_disclosure_all", "self_disclosure_red"),
+               model = "lm",
+               controls = c("media_literacy", "critical_thinking", "age"),
+               fun1 = tidy_new)
+# Check
+summary(specs)
+
+# Estimate models
+results <- specr(specs)
+
+# Check
+summary(results)
+```
+
+## Resampling under-the-null
+
+Generating distributions for these test statistics under the null
+hypothesis isn’t feasible analytically, but we can create these
+distributions through resampling under the null hypothesis. This process
+entails adjusting the observed data to ensure a known true null
+hypothesis and then randomly sampling from the modified data. The test
+statistic is then computed on each of these samples.
+
+We can secondly use the function `boot_null` to compute “under-the-null”
+data sets and re-compute SCA results on them. This process is akin to
+bootstrapping and thus takes a while, particularly if the number of
+samples is high. We run only 10 samples for this example, but in
+practice, we should rather use n = 500 or even n = 1,000.
+
+``` r
+# To make it reproducible
+set.seed(42)
+
+# Run bootstrapping (takes a couple of minutes)
+boot_models <- boot_null(results, specs, n_samples = 10) 
+
+boot_models$boot_models %>%
+  unnest(cols = c("fit")) %>%
+  select(id, x, y, controls, estimate) %>%
+  print(n = 70)
+```
+
+## Inference tests
+
+Lastly, if we use the `summary()` function on the result `specr.boot`
+object, we get the desired inference tests:
+
+1.  A test for whether the median effect across all specifications is
+    more extreme than would be expected if all specifications had a true
+    effect of zero
+2.  A test whether the share of specifications with statistically
+    significant effects in the expected direction is more extreme than
+    would be expected if all specifications had an effect of zero
+
+``` r
+summary(boot_models)
+```
+
+As we can see, the data is more extreme that would be expected if all
+specifications had an effect of zero.
+
+## Visualizing the inference curve
+
+As shown in Simonsohn et al., (2020), we can also visualize the
+distribution of the curve under-the-null and compare it with the
+actually observed specification curve. We can simply do this by plotting
+the `specr.boot` object.
+
+``` r
+plot(boot_models)
+```
+
+In this case, the observed curve is clearly outside the resampled curves
+under-the-null.
+
+**Exercise:** Create a full specification curve analysis for the
+relationship between media literacy and self-disclosure. With regard to
+potential specifications…
+
+-   investigate whether the 20 items actually form a uni-dimensional
+    model (you will find that it does not) and include several
+    dimensions, measures with different items, etc.
+-   include a variety of covariates (most imporantly the manipulations:
+    norm and profile and their interaction…)
+-   create subset analyses (e.g., age groups, gender, educational
+    levels…)
+-   are there different model estimation approaches?
+-   What about outliers?
+-   What about imputation?
+
+``` r
+# Code here
+```

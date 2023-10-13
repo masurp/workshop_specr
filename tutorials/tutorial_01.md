@@ -1,0 +1,299 @@
+Basics Mechanisms of Specification Curve Analysis
+================
+Philipp Masur
+2023-10
+
+-   <a href="#introduction" id="toc-introduction">Introduction</a>
+-   <a href="#preparation" id="toc-preparation">Preparation</a>
+    -   <a href="#loading-packages" id="toc-loading-packages">Loading
+        Packages</a>
+    -   <a href="#getting-some-data" id="toc-getting-some-data">Getting some
+        data</a>
+    -   <a href="#standardization-or-not"
+        id="toc-standardization-or-not">Standardization or not?</a>
+-   <a href="#robustness-tests" id="toc-robustness-tests">Robustness
+    tests</a>
+    -   <a href="#the-core-analysis" id="toc-the-core-analysis">The “core”
+        analysis</a>
+    -   <a href="#alternative-specifications"
+        id="toc-alternative-specifications">Alternative specifications</a>
+    -   <a href="#a-first-specification-curve"
+        id="toc-a-first-specification-curve">A first specification curve</a>
+-   <a href="#towards-a-full-specification-curve-analysis"
+    id="toc-towards-a-full-specification-curve-analysis">Towards a full
+    specification curve analysis</a>
+    -   <a href="#mapping-across-formulas"
+        id="toc-mapping-across-formulas">Mapping across formulas</a>
+    -   <a href="#mapping-across-specifications"
+        id="toc-mapping-across-specifications">Mapping across specifications</a>
+
+# Introduction
+
+In this tutorial, we will explore the basic mechanisms of specification
+curve analysis. Rather than using existing packages, the goal is to gain
+an intuitive understanding of what specification curve analysis tries to
+achieve and how we can program a simple set of functions that allows us
+to run several models at once while extracting relevant parameters for
+further analyses. We start from the idea of simple robustness test and
+move on to specify systematic combinations of analytical decisions in a
+more general framework. Overall, the tutorial serves to provide insights
+into the fabric of the package `specr`.
+
+# Preparation
+
+## Loading Packages
+
+In this tutorial, we will primarily use the package collection
+`tidyverse`, which allows a variety of flexible data wrangling
+procedures. We further load the package `texreg`, which provides a nice
+way to summarize several model outputs at once.
+
+``` r
+library(tidyverse)
+library(texreg)
+library(psych)
+```
+
+## Getting some data
+
+We are going to use a synthetic data set, which exactly resembles a
+subset of one wave of the pairfam study (The German Family Panel:
+<https://www.pairfam.de/en/>). We can load it directly from a github
+repository by using `read_csv()` and providing the link to the data set.
+
+``` r
+# Loading data
+d <- read_csv("https://raw.githubusercontent.com/ccs-amsterdam/r-course-material/master/data/pairfam_synth_data.csv")[-1]
+
+# Number of participants
+nrow(d)
+
+# Overview
+head(d)
+
+# Sample characteristics
+describe(d$age)
+```
+
+As we can see, the sample consists of n = 3,132 German adolescents (Age:
+M = 15.97, SD = 0.83). The data set includes variables of medie use (SNS
+use, TV use, Internet use) and well-being (self-esteem, depression,
+life_satisfaction…) as well as potential covariates (e.g., friend
+satisfaction). Our goal is to estimate the relationship between
+“technology use” and “well-being”. Despite the comparatively small
+amount of variables, we will see that it can nonetheless result in a
+fairly large multiverse of analyses.
+
+## Standardization or not?
+
+As part of our data preparation, we have to ask ourselves whether or not
+we want to standardize the variables. Technically it is not necessary,
+however, it often makes sense. As we want to compare results of
+different specifications, we should probably standardize all relevant
+variables to make sure that we can actually compare the resulting effect
+sizes (e.g.,
+![\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+from a linear regression).
+
+``` r
+# Select all relevant variables
+std_vars <- c("age", "tv_use", "internet_use", "sns_use",
+              "self_esteem", "depression", "life_satisfaction_r", "friend_satisfaction")
+
+# Standardize all variables in one step
+d <- d %>% 
+  mutate(across(all_of(std_vars), function(x) (x - mean(x, na.rm = T)) / sd(x, T)))
+```
+
+# Robustness tests
+
+As mentioned before, specification curve analysis is a formalization or
+extention of the practice of reporting robustness tests. Let’s imagine
+we are interested in the following hypothesis:
+
+**H**: People that engage more with media are more likely to report less
+well-being.
+
+Note the following practical challenges:
+
+-   `x` (media use) is somewhat ill-defined. What does it refer to? SNS
+    use, TV use, or Internet use or all of it??
+-   `y` (well-being) is somewhat ill-defined. What does it refer to?
+    Life satisfaction, reversed depression, or self-esteem?
+-   The type of relationship
+    ![F()](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F%28%29 "F()")
+    is somewhat clear as it is expressed in linear terms
+-   Potential confounders or moderators are not mentioned.
+
+## The “core” analysis
+
+Let’s imagine that a researcher operationalizes `x` as SNS use frequency
+and `y` as life satisfaction. Without any further assumptions, our core
+analysis could look something like this:
+
+``` r
+m1 <- lm(life_satisfaction_r ~ sns_use, data = d)
+summary(m1)
+```
+
+Conclusion: There is no practically and significantly meaningful
+relationship between media use (operationalized as SNS use frequency)
+and well-being (operationaized as life satisfaction). Our hypothesis
+**H** is not supported.
+
+## Alternative specifications
+
+Now, the researcher wants to test the robustness of this assumptions and
+alternative the operationalizations. For example, she could look at
+other indicators for the dependent variable of well-being. Let’s quickly
+check whether they (even) correlate:
+
+``` r
+# Zero-order correlation between dependent variables
+d %>%
+  select(self_esteem, life_satisfaction_r, depression) %>%
+  cor(use = "pairwise") %>%
+  round(2)
+```
+
+The zero-order correlation suggest medium to strong correlations between
+all operationalizations of well-being (Caution: Both self-esteem and
+life satisfaction seem to be reversed, such that higher values indicate
+lower life satisfaction and lower self-esteem!).
+
+The researcher hence decides to test both depression and life
+satisfaction as alternative (perhaps equally justifiable)
+operationalizations of well-being. She further wants to test the
+influence of overall friend satisfcation as a potential confounder. She
+just systematically varies the dependent variable and the inclusion of
+the confounder, resulting in 3 additional models.
+
+``` r
+# Robustness tests
+m2 <- lm(depression ~ sns_use, data = d)
+m3 <- lm(life_satisfaction_r ~ sns_use + friend_satisfaction, data = d)
+m4 <- lm(depression ~ sns_use + friend_satisfaction, data = d)
+
+# Result comparison using the package `texreg`
+screenreg(list(m1, m2, m3, m4), single.row = T)
+```
+
+As we can see, SNS use is not related to life satisfaction, independent
+of whether or not friend satisifaction is controlled for (M2, M4). Yet,
+it becomes a significant positive predictor of depression, independent
+of whether or not friend satisfaction is included as covariate (M1, M3).
+
+## A first specification curve
+
+No a specification curve is nothing but plotting the resulting
+coefficients on a common scale to be able to visually compare the
+results. We can do so by first specify a function that extracts the
+relevant parameters from a linear regression model. We then map this
+function across all four models. The resulting data set can be used to
+create a simple coefficient plot.
+
+``` r
+# Function to extract parameters
+extract_coef <- function(model) {
+  t <- broom::tidy(model, conf.int = TRUE)
+  t <- slice(t, 2)
+  return(t)
+}
+
+# Check
+extract_coef(m1)
+
+# Plot curve
+list(m1, m2, m3, m4) %>%
+  map_df(extract_coef) %>%
+  mutate(model = paste0("M", 1:4)) %>%
+  mutate(model = fct_reorder(model, estimate)) %>%
+  ggplot(aes(x = model)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "grey80") +
+  geom_pointrange(aes(y = estimate, ymin = conf.low, ymax = conf.high)) +
+  theme_classic() +
+  labs(x = "models",
+       title = "Relationship between media use and well-being",
+       subtitle = "A simpe specification curve analysis")
+```
+
+# Towards a full specification curve analysis
+
+## Mapping across formulas
+
+Rather than estimating all models individually (which can be cumbersome
+if the number of specifications is very large), we can also think about
+ways to map across regression formulas and then estimate all models at
+the same time.
+
+``` r
+# Create all formulas as a vector of specifications
+formulas <- c("life_satisfaction_r ~ sns_use",
+              "depression ~ sns_use",
+              "life_satisfaction_r ~ sns_use + friend_satisfaction",
+              "depression ~ sns_use + friend_satisfaction")
+
+# Function that takes the formula, estimates the model and extracts relevant parameters
+estimate_specs <- function(formula, data) {
+  fit <- lm(formula, data)
+  broom::tidy(fit, conf.int = TRUE) %>%
+    slice(2)
+}
+
+# Estimate all models at the same time
+map_df(formulas, function(x) estimate_specs(x, d)) %>%
+  mutate(formula = formulas)
+```
+
+## Mapping across specifications
+
+To make this truly versatile and more “in line” with the general idea of
+the specification curve analysis, we can also define all analytical
+choices individually and then create all combinations (the relevant
+regression formulas) automatically before we map across them.
+
+``` r
+# Setting up different specifications
+y        <- c("depression", "life_satisfaction_r", "self_esteem")
+x        <- c("sns_use", "internet_use")
+controls <- c("1", "friend_satisfaction") # adding a 1 as "none"
+
+# Using expand.grid to create all possible combinations
+setup <- expand.grid(y, x, controls) %>%
+  mutate(formula = paste(Var1, "~", Var2, "+", Var3))
+
+results <- setup$formula %>%
+  map_df(function(x) estimate_specs(x, d)) %>%
+  cbind(setup, .) %>%
+  as_tibble
+
+results %>%
+  arrange(estimate)
+```
+
+As we can see, we now have 12 alternative specifications. The resulting
+effect sizes
+(![\beta](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta "\beta")
+coefficients) range from .00 to .07, with most of them being
+statistically significant. From this we can conclude that there might be
+a negative relationship between media use and well-being, but it is
+overall very small and contingent on how both the independent and
+dependent variable is operationalized. The largest effect sizes (that
+are still very small) are obtained when SNS use and either depression or
+self-esteem is studied.
+
+Overall, this represents the very basic mechanism of a specification
+curve analysis. Of course, we only explored analytical decisions that
+yield variations in the regression formula and specification curve
+analysis usually goes beyond that (e.g., different models, subsets,
+outlier removal, imputation, to name just a few). Yet, the general idea
+remains the same.
+
+**Exercise:** Rerun the analyses, but add more robustness test (e.g.,
+more variants of the independent variable, explore the effect of other
+covariates such as gender or age). Bonus: Try to visualize the
+specification curve afterwards!
+
+``` r
+# Code here
+```
