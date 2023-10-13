@@ -1,7 +1,7 @@
 ---
 title: "Multiverse Analysis in R"
 subtitle: "Workshop"
-output: github_document
+output: html_document
 ---
 
 

@@ -57,9 +57,12 @@ RStudio is an asset.
 
 ## Preparation
 
+All materials and slides can be found on this webpage:
+<https://masurp.github.io/workshop_specr/>.
+
 For this 1-day workshop, I expect you…
 
-1.  to have R and RStudio installed. If you haven’t done so yet, have a
+1.  …to have R and RStudio installed. If you haven’t done so yet, have a
     look at this [getting
     started](https://github.com/ccs-amsterdam/r-course-material/blob/master/tutorials/R_basics_1_getting_started.md)
     tutorial, which walks you through the installation and helps you get
@@ -70,7 +73,7 @@ For this 1-day workshop, I expect you…
 install.packages("specr")
 ```
 
-2.  to have some basic knowledge of R and particularly data wrangling
+2.  …to have some basic knowledge of R and particularly data wrangling
     skills (at best, some knowledge about the `tidyverse`). If this is
     still new to you, we have several videos and tutorials on our [R
     course material GitHub
@@ -79,12 +82,30 @@ install.packages("specr")
     on transforming, summarizing, visualizing and reshaping data in the
     “data wrangling with the tidyverse” category.
 
-3.  some basic knowledge of regression models (e.g., linear regression,
+3.  …some basic knowledge of regression models (e.g., linear regression,
     logistic regression, multilevel linear regression).
 
 **Note:** The workshop will NOT provide an introduction to R!
 
 <br><br>
+
+### Morning
+
+| Time          | Topic                                                  |
+|:--------------|:-------------------------------------------------------|
+| 09:00 - 09:30 | Statistical Fortune-Telling                            |
+| 09:30 - 10:00 | A Garden of Forking Paths                              |
+| 10:00 - 11:00 | R: Exercise I: Basic Mechanisms of Multiverse Analysis |
+| 11:00 - 12:00 | Into the Multiverse                                    |
+
+### Afternoon
+
+| Time          | Topic                                            |
+|:--------------|:-------------------------------------------------|
+| 13:00 - 13:45 | Arbitrary Decisions                              |
+| 13:45 - 14:45 | R: Exercise II: Multiverse Analysis with `specr` |
+| 14:45 - 15:30 | A Mass of Poorly Justified Alternatives          |
+| 16:00 - 16:30 | R: Exercise III: Advanced Specifications         |
 
 <br><br>
 <hr>
