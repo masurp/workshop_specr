@@ -1,0 +1,17 @@
+name: "workshop_bayes"
+  output_dir: "."
+  navbar:
+    title: "Home"
+    type: inverse
+    right:
+    - text: "Slides"
+      href: https://masurp.github.io/workshop_bayes/slides/slides_01.html#1
+    - text: "Exercises"
+      href: exercises.html
+    - text: "Contact"
+      href: contact.html
+    - text: "Source Code"
+      href: "https://github.com/masurp/workshop_specr"
+  output:
+    html_document:
+    theme:  cosmo
