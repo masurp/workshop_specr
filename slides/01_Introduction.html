@@ -440,10 +440,12 @@
 <section id="fortune-telling-and-statistics" class="slide level2">
 <h2>Fortune-telling and Statistics</h2>
 <div class="columns">
-<div class="column" style="width:35%;">
+<div class="column" style="width:45%;">
 <p><img data-src="https://i.pinimg.com/736x/71/1f/40/711f40bbe5908b84a6db67dbfc11ae69--tea-companies-human-behavior.jpg"></p>
-</div><div class="column" style="width:65%;">
-<p><img data-src="https://i.stack.imgur.com/0hTBu.png"></p>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<p><img data-src="https://image.slidesharecdn.com/choosingappropriatestatisticstestflowchart-171001164040/75/choosing-appropriate-statistics-test-flow-chart-1-2048.jpg"></p>
 </div>
 </div>
 </section>
@@ -454,8 +456,13 @@
 <ul>
 <li><p>Sampling 500 participants from a commercial online panel</p></li>
 <li><p>Measuring social media use and mental health with (questionable) self-report measures</p></li>
-<li><p>Using a (somewhat arbitrary) statistical model such as linear regression</p></li>
-<li><p>Conclusion: Social media use is negatively related to mental health</p></li>
+<li><p>Simple decision path:</p>
+<ul>
+<li>Type of data? Continuous!</li>
+<li>Do you have a true independent variable? Yes!</li>
+</ul></li>
+<li><p>My choice: A (somewhat arbitrary) statistical model such as linear regression</p></li>
+<li><p>My conclusion: Social media use is negatively related to mental health</p></li>
 </ul>
 </div><div class="column" style="width:5%;">
 
@@ -475,8 +482,13 @@
 <ul>
 <li><p>Sampling 500 participants from a commercial online panel</p></li>
 <li><p>Measuring social media use and mental health with (questionable) self-report measures</p></li>
-<li><p>Using a (somewhat arbitrary) statistical model such as curvilinear regression</p></li>
-<li><p>Novel conclusion: Low doses of social media are beneficial, but high doses are detrimental</p></li>
+<li><p>Simple decision path:</p>
+<ul>
+<li>Type of data? Continuous!</li>
+<li>Do you have a true independent variable? Yes!</li>
+</ul></li>
+<li><p>My second guess: A (somewhat arbitrary) statistical model such as <strong>curvilinear</strong> regression</p></li>
+<li><p>My conclusion: Low doses of social media are beneficial, but high doses are detrimental!</p></li>
 </ul>
 </div><div class="column" style="width:5%;">
 
@@ -498,7 +510,7 @@
 <li><p>You cannot offload a subjective responsibility to an objective procedure</p></li>
 <li><p>Often easier to defend an objective statistical procedure than an subjective choice that gives “meaning” to the procedure</p></li>
 </ul>
-<p><br><br><br> <span style="font-size: 0.75em;">Intro example taken from McElreath’s (2023) “Statistical Rethinking” Lecture</span></p>
+<p><br><br><br> <span style="font-size: 0.75em;">Intro taken and adapted from McElreath’s (2023) “Statistical Rethinking” Lecture on Horoscopes</span></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:50%;">
@@ -511,8 +523,8 @@
 <h1>We should exercise caution in using seemingly complex statistical procedures, specifically those that claim to analyze a “multiverse”!</h1>
 
 </section>
-<section id="who-am-i" class="slide level2">
-<h2>Who am I?</h2>
+<section id="so-who-am-i" class="slide level2">
+<h2>So who am I?</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <ul>
@@ -612,6 +624,20 @@
 </div>
 </div>
 </div>
+</section>
+<section id="about-this-workshop" class="slide level2">
+<h2>About this workshop</h2>
+<h3 id="slides-and-material">Slides and Material</h3>
+<ul>
+<li><p>You can find everything on this website: https://masurp.github.io/workshop_specr/</p></li>
+<li><p>The page will stay online beyond the workshop and will potentially be updated in the future</p></li>
+</ul>
+<h3 id="formalia">Formalia</h3>
+<ul>
+<li><p>A mix of theoretical concepts and ideas and practical sessions in R</p></li>
+<li><p>Do ask question at any time!</p></li>
+<li><p>Let’s make this more a discussion than a “me-telling-you-about-stuff” situation</p></li>
+</ul>
 </section></section>
 <section>
 <section id="a-garden-of-forking-paths" class="title-slide slide level1 centered center" data-background-color="steelblue">
@@ -715,6 +741,31 @@
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="img/orben_nhb.webp"></p>
 </div>
+</div>
+</div>
+</section>
+<section id="type-of-analytical-decisions" class="slide level2">
+<h2>Type of analytical decisions</h2>
+
+<img data-src="img/orben_nhb_table.png" class="r-stretch"></section>
+<section id="results" class="slide level2">
+<h2>Results</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<p><br></p>
+<ul>
+<li><p>Association between digital technology use and adolescent well-being is negative but small</p></li>
+<li><p>Technology use explains at most 0.4% of the variation in well-being.</p></li>
+<li><p>Findings suggests that these effects are too small to warrant policy change</p></li>
+</ul>
+<p><br></p>
+<ul>
+<li>How important was the method - specification curve analysis - for this finding?</li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:30%;">
+<p><img data-src="img/orben_results.png"></p>
 </div>
 </div>
 </section></section>
@@ -986,7 +1037,7 @@
 <span id="cb6-15"><a href="#cb6-15"></a></span>
 <span id="cb6-16"><a href="#cb6-16"></a>  function (x) </span>
 <span id="cb6-17"><a href="#cb6-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb6-18"><a href="#cb6-18"></a>&lt;environment: 0x7fc9446e95f8&gt;</span>
+<span id="cb6-18"><a href="#cb6-18"></a>&lt;environment: 0x7fe308607ff8&gt;</span>
 <span id="cb6-19"><a href="#cb6-19"></a></span>
 <span id="cb6-20"><a href="#cb6-20"></a></span>
 <span id="cb6-21"><a href="#cb6-21"></a>Head of specifications table (first 6 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1029,7 +1080,7 @@
 <span id="cb9-15"><a href="#cb9-15"></a></span>
 <span id="cb9-16"><a href="#cb9-16"></a>  function (x) </span>
 <span id="cb9-17"><a href="#cb9-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb9-18"><a href="#cb9-18"></a>&lt;environment: 0x7fc92c57a210&gt;</span>
+<span id="cb9-18"><a href="#cb9-18"></a>&lt;environment: 0x7fe2f00e3d98&gt;</span>
 <span id="cb9-19"><a href="#cb9-19"></a></span>
 <span id="cb9-20"><a href="#cb9-20"></a></span>
 <span id="cb9-21"><a href="#cb9-21"></a>Head of specifications table (first 6 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1075,7 +1126,7 @@
 <span id="cb12-15"><a href="#cb12-15"></a></span>
 <span id="cb12-16"><a href="#cb12-16"></a>  function (x) </span>
 <span id="cb12-17"><a href="#cb12-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>&lt;environment: 0x7fc92d08bd28&gt;</span>
+<span id="cb12-18"><a href="#cb12-18"></a>&lt;environment: 0x7fe2f1084a58&gt;</span>
 <span id="cb12-19"><a href="#cb12-19"></a></span>
 <span id="cb12-20"><a href="#cb12-20"></a></span>
 <span id="cb12-21"><a href="#cb12-21"></a>Head of specifications table (first 4 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1116,7 +1167,7 @@
 <span id="cb16-4"><a href="#cb16-4"></a></span>
 <span id="cb16-5"><a href="#cb16-5"></a>  Class:                          specr.object -- version: 1.0.1 </span>
 <span id="cb16-6"><a href="#cb16-6"></a>  Cores used:                     1 </span>
-<span id="cb16-7"><a href="#cb16-7"></a>  Duration of fitting process:    1.376 sec elapsed </span>
+<span id="cb16-7"><a href="#cb16-7"></a>  Duration of fitting process:    1.211 sec elapsed </span>
 <span id="cb16-8"><a href="#cb16-8"></a>  Number of specifications:       108 </span>
 <span id="cb16-9"><a href="#cb16-9"></a></span>
 <span id="cb16-10"><a href="#cb16-10"></a>Descriptive summary of the specification curve:</span>

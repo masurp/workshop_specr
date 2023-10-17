@@ -78,15 +78,19 @@ A divination or fortune-telling method that interprets patterns in tea leaves, c
 
 :::: {.columns}
 
-::: {.column width="35%"}
+::: {.column width="45%"}
 
 ![](https://i.pinimg.com/736x/71/1f/40/711f40bbe5908b84a6db67dbfc11ae69--tea-companies-human-behavior.jpg)
 
 :::
 
-::: {.column width="65%"}
+::: {.column width="10%"}
 
-![](https://i.stack.imgur.com/0hTBu.png)
+:::
+
+::: {.column width="45%"}
+
+![](https://image.slidesharecdn.com/choosingappropriatestatisticstestflowchart-171001164040/75/choosing-appropriate-statistics-test-flow-chart-1-2048.jpg)
 
 :::
 ::::
@@ -101,9 +105,14 @@ A divination or fortune-telling method that interprets patterns in tea leaves, c
 
 - Measuring social media use and mental health with (questionable) self-report measures
 
-- Using a (somewhat arbitrary) statistical model such as linear regression
+- Simple decision path: 
 
-- Conclusion: Social media use is negatively related to mental health
+    - Type of data? Continuous!
+    - Do you have a true independent variable? Yes!
+
+- My choice: A (somewhat arbitrary) statistical model such as linear regression
+
+- My conclusion: Social media use is negatively related to mental health
 
 :::
 
@@ -149,9 +158,14 @@ ggplot(NULL, aes(x, y)) +
 
 - Measuring social media use and mental health with (questionable) self-report measures
 
-- Using a (somewhat arbitrary) statistical model such as curvilinear regression
+- Simple decision path: 
 
-- Novel conclusion: Low doses of social media are beneficial, but high doses are detrimental
+    - Type of data? Continuous!
+    - Do you have a true independent variable? Yes!
+
+- My second guess: A (somewhat arbitrary) statistical model such as **curvilinear** regression
+
+- My conclusion: Low doses of social media are beneficial, but high doses are detrimental!
 
 :::
 
@@ -199,7 +213,7 @@ ggplot(NULL, aes(x, y)) +
 - Often easier to defend an objective statistical procedure than an subjective choice that gives "meaning" to the procedure
 
 <br><br><br>
-<span style="font-size: 0.75em;">Intro example taken from McElreath's (2023) "Statistical Rethinking" Lecture</span>
+<span style="font-size: 0.75em;">Intro taken and adapted from McElreath's (2023) "Statistical Rethinking" Lecture on Horoscopes</span>
 
 
 
@@ -218,7 +232,7 @@ ggplot(NULL, aes(x, y)) +
 
 # We should exercise caution in using seemingly complex statistical procedures, specifically those that claim to analyze a "multiverse"! {background="steelblue"}
 
-## Who am I?
+## So who am I?
 
 :::: {.columns}
 
@@ -297,6 +311,24 @@ tribble(
 
 :::
 ::::
+
+## About this workshop
+
+### Slides and Material
+
+- You can find everything on this website: https://masurp.github.io/workshop_specr/
+
+- The page will stay online beyond the workshop and will potentially be updated in the future
+
+
+### Formalia
+
+- A mix of theoretical concepts and ideas and practical sessions in R
+
+- Do ask question at any time!
+
+- Let's make this more a discussion than a "me-telling-you-about-stuff" situation
+
 
 # A Garden of Forking Paths {.centered background-color="steelblue"}
 
@@ -444,6 +476,41 @@ tribble(
 
 ![](img/orben_nhb.webp)
 :::
+
+
+## Type of analytical decisions
+
+![](img/orben_nhb_table.png)
+
+## Results
+
+:::: {.columns}
+
+::: {.column width=65%}
+
+<br>
+
+- Association between digital technology use and adolescent well-being is negative but small
+
+- Technology use explains at most 0.4% of the variation in well-being. 
+
+- Findings suggests that these effects are too small to warrant policy change
+
+<br>
+
+- How important was the method - specification curve analysis - for this finding?
+
+:::
+
+::: {.column width=5%}
+
+:::
+
+::: {.column width=30%}
+
+![](img/orben_results.png)
+:::
+::::
 
 
 # R: Exercise I {.centered background-color="steelblue"}
