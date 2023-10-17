@@ -18,7 +18,7 @@ library(printr)
 
 # Introduction
 
-The function `setup()` seems rather simple, but it is in fact very versatile and allows to incorporate (almost) any analytic choice that one might engage in during data analysis. In this vignette, I am going to exemplify how this function can be used to create several analytical choices. 
+This tutorial aims to exemplify the various ways in which `specr` can be used to study the impact of different analytical choices on your results. The function `setup()` seems rather simple, but it is in fact very versatile and allows to incorporate (almost?) any analytic choice that one might engage in during data analysis. In this vignette, I am going to exemplify how this function can be used to integrate any analytical choice or decision, ranging from different variable estimation approaches to complex decisions relating to e.g., outlier removal, combined effects of covariates or imputation.  
 
 
 ```{r, message = F, warning = F}
