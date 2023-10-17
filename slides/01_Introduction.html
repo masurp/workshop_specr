@@ -426,9 +426,11 @@
 <p>A divination or fortune-telling method that interprets patterns in tea leaves, coffee grounds, or wine sediments:</p>
 <ul>
 <li>snake = enmity or falsehood</li>
-<li>spade = good fortune through industry)</li>
-<li>mountain = journey of hindrance)</li>
+<li>spade = good fortune through industry</li>
+<li>mountain = journey of hindrance</li>
 <li>house = change, success</li>
+<li>anchor = prosperity in business, stable romantic relation</li>
+<li>axe = power to overcome difficulties</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="https://www.teausa.com/teausa/images/TeaReading.jpg"></p>
@@ -450,7 +452,7 @@
 <div class="columns">
 <div class="column" style="width:45%;">
 <ul>
-<li><p>Sampling n = 500 participants from a commercial online panel</p></li>
+<li><p>Sampling 500 participants from a commercial online panel</p></li>
 <li><p>Measuring social media use and mental health with (questionable) self-report measures</p></li>
 <li><p>Using a (somewhat arbitrary) statistical model such as linear regression</p></li>
 <li><p>Conclusion: Social media use is negatively related to mental health</p></li>
@@ -471,7 +473,7 @@
 <div class="columns">
 <div class="column" style="width:45%;">
 <ul>
-<li><p>Sampling n = 500 participants from a commercial online panel</p></li>
+<li><p>Sampling 500 participants from a commercial online panel</p></li>
 <li><p>Measuring social media use and mental health with (questionable) self-report measures</p></li>
 <li><p>Using a (somewhat arbitrary) statistical model such as curvilinear regression</p></li>
 <li><p>Novel conclusion: Low doses of social media are beneficial, but high doses are detrimental</p></li>
@@ -857,6 +859,22 @@
 </section>
 <section id="specification-curve-analysis-with-specr" class="slide level2">
 <h2>Specification curve analysis with <code>specr</code></h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<ul>
+<li><p>R Package (currently Version 1.0.0 on CRAN, 1.0.1 on github)</p></li>
+<li><p>Versatile framework for conduction multiverse/specification curve analysis with R</p></li>
+<li><p>Based around the “mapping” approach implemented in <code>purrr</code></p></li>
+<li><p>Ties nicely into the <code>tidyverse</code></p></li>
+<li><p>Active and continuous development</p></li>
+</ul>
+</div><div class="column" style="width:20%;">
+<p><img data-src="https://masurp.github.io/specr/reference/figures/specr_logo.png"></p>
+</div>
+</div>
+</section>
+<section id="the-example-data" class="slide level2">
+<h2>The example data</h2>
 <p>For this example, we are going to use a synthetic data set that includes variables that allow to assess the relationship between media use and well-being:</p>
 <div class="cell columns column-output-location">
 <div class="column">
@@ -968,7 +986,7 @@
 <span id="cb6-15"><a href="#cb6-15"></a></span>
 <span id="cb6-16"><a href="#cb6-16"></a>  function (x) </span>
 <span id="cb6-17"><a href="#cb6-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb6-18"><a href="#cb6-18"></a>&lt;environment: 0x7ff57a08c6a0&gt;</span>
+<span id="cb6-18"><a href="#cb6-18"></a>&lt;environment: 0x7fc9446e95f8&gt;</span>
 <span id="cb6-19"><a href="#cb6-19"></a></span>
 <span id="cb6-20"><a href="#cb6-20"></a></span>
 <span id="cb6-21"><a href="#cb6-21"></a>Head of specifications table (first 6 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1011,7 +1029,7 @@
 <span id="cb9-15"><a href="#cb9-15"></a></span>
 <span id="cb9-16"><a href="#cb9-16"></a>  function (x) </span>
 <span id="cb9-17"><a href="#cb9-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb9-18"><a href="#cb9-18"></a>&lt;environment: 0x7ff57be12ba0&gt;</span>
+<span id="cb9-18"><a href="#cb9-18"></a>&lt;environment: 0x7fc92c57a210&gt;</span>
 <span id="cb9-19"><a href="#cb9-19"></a></span>
 <span id="cb9-20"><a href="#cb9-20"></a></span>
 <span id="cb9-21"><a href="#cb9-21"></a>Head of specifications table (first 6 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1057,7 +1075,7 @@
 <span id="cb12-15"><a href="#cb12-15"></a></span>
 <span id="cb12-16"><a href="#cb12-16"></a>  function (x) </span>
 <span id="cb12-17"><a href="#cb12-17"></a>broom::tidy(x, conf.int = TRUE)</span>
-<span id="cb12-18"><a href="#cb12-18"></a>&lt;environment: 0x7ff57d8be8d0&gt;</span>
+<span id="cb12-18"><a href="#cb12-18"></a>&lt;environment: 0x7fc92d08bd28&gt;</span>
 <span id="cb12-19"><a href="#cb12-19"></a></span>
 <span id="cb12-20"><a href="#cb12-20"></a></span>
 <span id="cb12-21"><a href="#cb12-21"></a>Head of specifications table (first 4 rows):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1098,7 +1116,7 @@
 <span id="cb16-4"><a href="#cb16-4"></a></span>
 <span id="cb16-5"><a href="#cb16-5"></a>  Class:                          specr.object -- version: 1.0.1 </span>
 <span id="cb16-6"><a href="#cb16-6"></a>  Cores used:                     1 </span>
-<span id="cb16-7"><a href="#cb16-7"></a>  Duration of fitting process:    1.1 sec elapsed </span>
+<span id="cb16-7"><a href="#cb16-7"></a>  Duration of fitting process:    1.376 sec elapsed </span>
 <span id="cb16-8"><a href="#cb16-8"></a>  Number of specifications:       108 </span>
 <span id="cb16-9"><a href="#cb16-9"></a></span>
 <span id="cb16-10"><a href="#cb16-10"></a>Descriptive summary of the specification curve:</span>
@@ -1668,20 +1686,9 @@
 <section>
 <section id="conclusion" class="title-slide slide level1 centered center" data-background-color="steelblue">
 <h1>Conclusion</h1>
-
-</section>
-<section id="section-2" class="slide level2" data-background-image="img/orion2.jpg">
-<h2></h2>
-</section>
-<section id="section-3" class="slide level2" data-background-image="img/orion4.jpg">
-<h2></h2>
-</section>
-<section id="section-4" class="slide level2" data-background-image="img/orion5.jpg">
-<h2></h2>
-</section>
-<section id="section-5" class="slide level2" data-background-image="img/orion6.jpg">
-<h2></h2>
-</section>
+<center>
+<p><img data-src="https://img.buzzfeed.com/buzzfeed-static/complex/images/bdnkabiqxpxmxzmcaluz/spider-man-meme.jpg" style="width:65.0%"></p>
+</center></section>
 <section id="so-what" class="slide level2">
 <h2>So what?</h2>
 <div class="columns">
@@ -1701,15 +1708,33 @@
 </section>
 <section id="want-to-learn-more" class="slide level2">
 <h2>Want to learn more?</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
 <ul>
-<li><p>Visit the website of <code>specr</code>: https://masurp.github.io/specr/</p></li>
-<li><p>Several extra tutorials on e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation…</p></li>
+<li><p>Visit the <a href="https://masurp.github.io/specr/">website of specr</a></p></li>
+<li><p>Several extra tutorials (e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation)</p></li>
+<li><p>Continuous development (e.g.&nbsp;integration of inferential tests, speed improvements)</p></li>
 </ul>
-
-<img data-src="img/specr_website.png" class="r-stretch"></section></section>
+</div><div class="column" style="width:55%;">
+<p><img data-src="img/specr_website.png"></p>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2" data-background-image="img/orion2.jpg">
+<h2></h2>
+</section>
+<section id="section-3" class="slide level2" data-background-image="img/orion4.jpg">
+<h2></h2>
+</section>
+<section id="section-4" class="slide level2" data-background-image="img/orion5.jpg">
+<h2></h2>
+</section>
+<section id="section-5" class="slide level2" data-background-image="img/orion6.jpg">
+<h2></h2>
+</section></section>
 <section>
-<section id="the-end" class="title-slide slide level1 centered center" data-background-color="black">
-<h1>The End</h1>
+<section id="the-end" class="title-slide slide level1 centered center" data-background-color="black" data-transition="fade" data-transition-speed="slow">
+<h1>THE END</h1>
 <center>
 Thank you!
 </center>

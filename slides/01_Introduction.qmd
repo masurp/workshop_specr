@@ -56,9 +56,11 @@ Fortune-telling framework:
 A divination or fortune-telling method that interprets patterns in tea leaves, coffee grounds, or wine sediments:
 
 - snake = enmity or falsehood
-- spade = good fortune through industry)
-- mountain = journey of hindrance)
+- spade = good fortune through industry
+- mountain = journey of hindrance
 - house = change, success
+- anchor = prosperity in business, stable romantic relation
+- axe = power to overcome difficulties
 
 
 :::
@@ -95,7 +97,7 @@ A divination or fortune-telling method that interprets patterns in tea leaves, c
 
 ::: {.column width="45%"}
 
-- Sampling n = 500 participants from a commercial online panel
+- Sampling 500 participants from a commercial online panel
 
 - Measuring social media use and mental health with (questionable) self-report measures
 
@@ -143,7 +145,7 @@ ggplot(NULL, aes(x, y)) +
 
 ::: {.column width="45%"}
 
-- Sampling n = 500 participants from a commercial online panel
+- Sampling 500 participants from a commercial online panel
 
 - Measuring social media use and mental health with (questionable) self-report measures
 
@@ -164,7 +166,6 @@ ggplot(NULL, aes(x, y)) +
 #| fold: true
 #| fig.width: 4
 #| fig.height: 3.7
-
 library(ggplot2)
 
 set.seed(42)
@@ -617,6 +618,34 @@ $N = n_x × n_y × n_Z × n_F$
 <span style="font-size: medium;">Simonsohn et al., 2020</span>
 
 ## Specification curve analysis with `specr`
+
+
+:::: {.columns}
+
+::: {.column width=80%}
+
+- R Package (currently Version 1.0.0 on CRAN, 1.0.1 on github)
+
+- Versatile framework for conduction multiverse/specification curve analysis with R
+
+- Based around the "mapping" approach implemented in `purrr` 
+
+- Ties nicely into the `tidyverse`
+
+- Active and continuous development
+
+
+:::
+
+::: {.column width=20%}
+
+![](https://masurp.github.io/specr/reference/figures/specr_logo.png)
+:::
+
+::::
+
+## The example data
+
 
 For this example, we are going to use a synthetic data set that includes variables that allow to assess the relationship between media use and well-being: 
 
@@ -1227,15 +1256,8 @@ plot(results4, type = "variance")
 
 # Conclusion {.centered background-color="steelblue"}
 
-
-## {background-image="img/orion2.jpg"}
-
-## {background-image="img/orion4.jpg"}
-
-## {background-image="img/orion5.jpg"}
-
-## {background-image="img/orion6.jpg"}
-
+<center>
+![](https://img.buzzfeed.com/buzzfeed-static/complex/images/bdnkabiqxpxmxzmcaluz/spider-man-meme.jpg){width=65%}
 
 
 ## So what?
@@ -1260,20 +1282,40 @@ plot(results4, type = "variance")
 :::
 
 ::::
-
+    
+    
 
 ## Want to learn more?
 
-- Visit the website of `specr`: https://masurp.github.io/specr/
+:::: {.columns}
 
-- Several extra tutorials on e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation...
+::: {.column width=45%}
+
+- Visit the [website of specr](https://masurp.github.io/specr/)
+
+- Several extra tutorials (e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation)
+
+- Continuous development (e.g. integration of inferential tests, speed improvements)
+
+:::
+
+::: {.column width=55%}
 
 ![](img/specr_website.png)
+:::
+
+::::
+
+## {background-image="img/orion2.jpg"}
+
+## {background-image="img/orion4.jpg"}
+
+## {background-image="img/orion5.jpg"}
+
+## {background-image="img/orion6.jpg"}
 
 
-
-
-# The End {.centered background-color="black"}
+# THE END {.centered background-color="black" transition="fade" transition-speed="slow"}
 
 <center>
 Thank you!
