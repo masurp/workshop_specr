@@ -12,117 +12,89 @@ format:
 editor: visual
 ---
 
+##  {background-image="img/orion.jpeg"}
 
-## {background-image="img/orion.jpeg"}
-
-## {background-image="img/orion2.jpg"}
+##  {background-image="img/orion2.jpg"}
 
 ## Horoscopes
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="30%"}
-
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Sidney_Hall_-_Urania%27s_Mirror_-_Orion_%28best_currently_available_version_-_2014%29.jpg/1024px-Sidney_Hall_-_Urania%27s_Mirror_-_Orion_%28best_currently_available_version_-_2014%29.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Sidney_Hall_-_Urania's_Mirror_-_Orion_(best_currently_available_version_-_2014).jpg/1024px-Sidney_Hall_-_Urania's_Mirror_-_Orion_(best_currently_available_version_-_2014).jpg)
 :::
 
-
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="65%"}
-
 Fortune-telling framework:
 
-- Practice of predicting information about a person's life
+-   Practice of predicting information about a person's life
 
-- From vague facts, provide vague advice
+-   From vague facts, provide vague advice
 
-- Must be applicable to any case
+-   Must be applicable to any case
 
-- Exaggerated importance of advice
-
+-   Exaggerated importance of advice
 :::
-
-::::
+:::
 
 ## Tasseomancy
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-
 A divination or fortune-telling method that interprets patterns in tea leaves, coffee grounds, or wine sediments:
 
-- snake = enmity or falsehood
-- spade = good fortune through industry
-- mountain = journey of hindrance
-- house = change, success
-- anchor = prosperity in business, stable romantic relation
-- axe = power to overcome difficulties
-
-
+-   snake = enmity or falsehood
+-   spade = good fortune through industry
+-   mountain = journey of hindrance
+-   house = change, success
+-   anchor = prosperity in business, stable romantic relation
+-   axe = power to overcome difficulties
 :::
 
 ::: {.column width="50%"}
-
 ![](https://www.teausa.com/teausa/images/TeaReading.jpg)
-
 :::
-
-::::
-
+:::
 
 ## Fortune-telling and Statistics
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
-
 ![](https://i.pinimg.com/736x/71/1f/40/711f40bbe5908b84a6db67dbfc11ae69--tea-companies-human-behavior.jpg)
-
 :::
 
 ::: {.column width="10%"}
-
 :::
 
 ::: {.column width="45%"}
-
 ![](https://image.slidesharecdn.com/choosingappropriatestatisticstestflowchart-171001164040/75/choosing-appropriate-statistics-test-flow-chart-1-2048.jpg)
-
 :::
-::::
+:::
 
 ## Social Media and Mental Health {auto-animate="true"}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
+-   Sampling 500 participants from a commercial online panel
 
-- Sampling 500 participants from a commercial online panel
+-   Measuring social media use and mental health with (questionable) self-report measures
 
-- Measuring social media use and mental health with (questionable) self-report measures
+-   Simple decision path:
 
-- Simple decision path: 
+    -   Type of data? Continuous!
+    -   Do you have a true independent variable? Yes!
 
-    - Type of data? Continuous!
-    - Do you have a true independent variable? Yes!
+-   My choice: A (somewhat arbitrary) statistical model such as linear regression
 
-- My choice: A (somewhat arbitrary) statistical model such as linear regression
-
-- My conclusion: Social media use is negatively related to mental health
-
+-   My conclusion: Social media use is negatively related to mental health
 :::
 
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="50%"}
-
-
 ```{r}
 #| fold: true
 #| fig.width: 4
@@ -142,40 +114,31 @@ ggplot(NULL, aes(x, y)) +
   labs(x = "social media use", y = "mental health")
 
 ```
-
-
 :::
-
-::::
+:::
 
 ## Social Media and Mental Health {auto-animate="true"}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
+-   Sampling 500 participants from a commercial online panel
 
-- Sampling 500 participants from a commercial online panel
+-   Measuring social media use and mental health with (questionable) self-report measures
 
-- Measuring social media use and mental health with (questionable) self-report measures
+-   Simple decision path:
 
-- Simple decision path: 
+    -   Type of data? Continuous!
+    -   Do you have a true independent variable? Yes!
 
-    - Type of data? Continuous!
-    - Do you have a true independent variable? Yes!
+-   My second guess: A (somewhat arbitrary) statistical model such as **curvilinear** regression
 
-- My second guess: A (somewhat arbitrary) statistical model such as **curvilinear** regression
-
-- My conclusion: Low doses of social media are beneficial, but high doses are detrimental!
-
+-   My conclusion: Low doses of social media are beneficial, but high doses are detrimental!
 :::
 
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="50%"}
-
-
 ```{r}
 #| fold: true
 #| fig.width: 4
@@ -194,82 +157,63 @@ ggplot(NULL, aes(x, y)) +
   labs(x = "social media use", y = "mental health")
 
 ```
-
-
 :::
-
-::::
+:::
 
 ## Statistical stargazing
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
+-   Statistical procedures only acquire meaning from scientific models
 
-- Statistical procedures only acquire meaning from scientific models
+-   You cannot offload a subjective responsibility to an objective procedure
 
-- You cannot offload a subjective responsibility to an objective procedure
+-   Often easier to defend an objective statistical procedure than an subjective choice that gives "meaning" to the procedure
 
-- Often easier to defend an objective statistical procedure than an subjective choice that gives "meaning" to the procedure
-
-<br><br><br>
-<span style="font-size: 0.75em;">Intro taken and adapted from McElreath's (2023) "Statistical Rethinking" Lecture on Horoscopes</span>
-
-
-
+<br><br><br> [Intro taken and adapted from McElreath's (2023) "Statistical Rethinking" Lecture on Horoscopes]{style="font-size: 0.75em;"}
 :::
 
 ::: {.column width="5%"}
-
 :::
-
 
 ::: {.column width="50%"}
 ![](img/orion3.jpg)
 :::
-
-::::
+:::
 
 # We should exercise caution in using seemingly complex statistical procedures, specifically those that claim to analyze a "multiverse"! {background="steelblue"}
 
 ## So who am I?
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="70%"}
+-   Assistant Professor at Vrije Universiteit Amsterdam
 
-- Assistant Professor at Vrije Universiteit Amsterdam
+-   Studied Communication Science, Philosophy, and Economics
 
-- Studied Communication Science, Philosophy, and Economics
+-   Research Areas
 
-- Research Areas
-  
-  - Online Privacy
-  - Social Influence and Contagion
-  - Media Literacy
-  
-- Methodological Interest
+    -   Online Privacy
+    -   Social Influence and Contagion
+    -   Media Literacy
 
-  - Test Theory and Scale Development
-  - Bayesian Estimation
-  - Flexibility in Data Analysis
-  - Computational Methods
-  
+-   Methodological Interest
+
+    -   Test Theory and Scale Development
+    -   Bayesian Estimation
+    -   Flexibility in Data Analysis
+    -   Computational Methods
 :::
 
 ::: {.column width="30%"}
-
 ![](img/pexels-jean-carlo-emer-2901480.jpg)
 :::
-
-::::
+:::
 
 ## Content
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
-
 ### Morning
 
 ```{r, echo = F, message = F, warning = F}
@@ -286,15 +230,12 @@ tribble(
   column_spec(1, width = "6.0em") %>%
   column_spec(2, width = "25em")
 ```
-
 :::
 
 ::: {.column width="5%"}
-
 :::
 
 ::: {.column width="45%"}
-
 ### Afternoon
 
 ```{r, echo = F, message = F, warning = F}
@@ -308,68 +249,55 @@ tribble(
   column_spec(1, width = "6.0em") %>%
   column_spec(2, width = "25em")
 ```
-
 :::
-::::
+:::
 
 ## About this workshop
 
 ### Slides and Material
 
-- You can find everything on this website: https://masurp.github.io/workshop_specr/
+-   You can find everything on this website: https://masurp.github.io/workshop_specr/
 
-- The page will stay online beyond the workshop and will potentially be updated in the future
-
+-   The page will stay online beyond the workshop and will potentially be updated in the future
 
 ### Formalia
 
-- A mix of theoretical concepts and ideas and practical sessions in R
+-   A mix of theoretical concepts and ideas and practical sessions in R
 
-- Do ask question at any time!
+-   Do ask question at any time!
 
-- Let's make this more a discussion than a "me-telling-you-about-stuff" situation
-
+-   Let's make this more a discussion than a "me-telling-you-about-stuff" situation
 
 # A Garden of Forking Paths {.centered background-color="steelblue"}
 
 <br><br>
 
-:::: {.columns}
-
-::: {.column width=65%}
-
+::: columns
+::: {.column width="65%"}
 <br><br>
 
-“I thought of a labyrinth of labyrinths, of one sinuous spreading labyrinth that would encompass the past and the future... I felt myself to be, for an unknown period of time, an abstract perceiver of the world.” 
-
+"I thought of a labyrinth of labyrinths, of one sinuous spreading labyrinth that would encompass the past and the future... I felt myself to be, for an unknown period of time, an abstract perceiver of the world."
 :::
 
-::: {.column width=10%}
-
+::: {.column width="10%"}
 :::
 
-::: {.column width=25%}
-
+::: {.column width="25%"}
 ![](https://upload.wikimedia.org/wikipedia/en/c/c9/ElJard%C3%ADnDeSenderosQueSeBifurcan.jpg)
-
 :::
-::::
+:::
 
 ## Evolutionary Garden of Forking Paths
 
+::: img-wrapper
+![](img/tree-of-life_2000.png){width="100%"}
+:::
 
-<div class="img-wrapper">
-![](img/tree-of-life_2000.png){width=100%}
-</div>
-
-
-<span style="font-size: medium;">Image by Eisenberg, 2018</span>
-
+[Image by Eisenberg, 2018]{style="font-size: medium;"}
 
 ## Statistical Garden of Forking Paths
 
 ![](img/gofp_01.png)
-
 
 ## Statistical Garden of Forking Paths
 
@@ -391,92 +319,83 @@ tribble(
 
 ![](img/gofp_06.png)
 
-
 ## Many Analyst, Different Conclusions
 
-
-:::: {.columns}
-
-::: {.column width=45%}
-
+::: columns
+::: {.column width="45%"}
 ![](img/silberzahn.png)
 :::
 
-::: {.column width=55%}
-
+::: {.column width="55%"}
 ![](img/silberzahn_fig.png)
 :::
-
-::::
-
+:::
 
 ## Undisclosed flexibility
 
-:::: {.columns}
-
-::: {.column width=60%}
-
+::: columns
+::: {.column width="60%"}
 ![](img/simmons.png)
+:::
 
+::: {.column width="40%"}
+> "Despite the nominal endorsement of a maximum false-positive rate of 5% (...) current standards for disclosing details of data collection and analyses make false positives vastly more likely. In fact, it is unacceptably easy to publish 'statistically significant' evidence consistent with any hypothesis."
+:::
+:::
+
+## Simulation-based findings
+
+::: columns
+
+::: {.column width="60%"}
+
+![](img/simmons_table.png)
 
 :::
 
-::: {.column width=40%}
+::: {.column width="40%"}
 
->"Despite the nominal endorsement of a maximum false-positive rate of 5% (…) current standards for disclosing details of data collection and analyses make false positives vastly more likely. In fact, it is unacceptably easy to publish ‘statistically significant’ evidence consistent with any hypothesis."
+>As high as these estimates are, they may actually be conservative.  We  did  not  consider  many  other  degrees  of  freedom  that  researchers  commonly  use... (p. 1361)
 
 :::
+
 ::::
-
 
 ## What can we do?
 
-:::: {.columns}
-
-::: {.column width=80%}
-
+::: columns
+::: {.column width="80%"}
 <br>
 
-### **Solution 1:** Choosing one analytical pathway beforehand 
+### **Solution 1:** Choosing one analytical pathway beforehand
 
-
-- Classic falsification paradigm (Popper)
-- Strictly speaking, requires **preregistration**
-- Requires strong justification (maybe not always possible?)
+-   Classic falsification paradigm (Popper)
+-   Strictly speaking, requires **preregistration**
+-   Requires strong justification (maybe not always possible?)
 
 <br><br>
 
 ### **Solution 2:** Examine all possible analytical pathways
 
-- **Specification curve** (SCA) or **multiverse analysis** (MA)
-- Investigating all (theoretically plausible) models
-
-
+-   **Specification curve** (SCA) or **multiverse analysis** (MA)
+-   Investigating all (theoretically plausible) models
 :::
 
-::: {.column width=5%}
-
+::: {.column width="5%"}
 :::
 
-::: {.column width=15%}
-
-![](https://cdn.cos.io/media/images/prereg-badge.original.png)
-<br><br><br><br><br>
-![](https://masurp.github.io/specr/reference/figures/specr_logo.png)
-
+::: {.column width="15%"}
+![](https://cdn.cos.io/media/images/prereg-badge.original.png) <br><br><br><br><br> ![](https://masurp.github.io/specr/reference/figures/specr_logo.png)
 :::
-::::
-
+:::
 
 ## A Prominent Paper
 
 ::: {layout="[1,1]"}
-
 ![](img/orben_nhb_title.png)
 
 ![](img/orben_nhb.webp)
 :::
-
 
 ## Type of analytical decisions
 
@@ -484,86 +403,72 @@ tribble(
 
 ## Results
 
-:::: {.columns}
+::: columns
+::: {.column width="65%"}
+<br>
 
-::: {.column width=65%}
+-   Association between digital technology use and adolescent well-being is negative but small
+
+-   Technology use explains at most 0.4% of the variation in well-being.
+
+-   Findings suggests that these effects are too small to warrant policy change
 
 <br>
 
-- Association between digital technology use and adolescent well-being is negative but small
-
-- Technology use explains at most 0.4% of the variation in well-being. 
-
-- Findings suggests that these effects are too small to warrant policy change
-
-<br>
-
-- How important was the method - specification curve analysis - for this finding?
-
+-   How important was the method - specification curve analysis - for this finding?
 :::
 
-::: {.column width=5%}
-
+::: {.column width="5%"}
 :::
 
-::: {.column width=30%}
-
+::: {.column width="30%"}
 ![](img/orben_results.png)
 :::
-::::
-
+:::
 
 # R: Exercise I {.centered background-color="steelblue"}
 
-
 # Into the Multiverse {.centered background-color="steelblue"}
 
-<center>
-![](https://www.langweiledich.net/wp-content/uploads/2021/12/Everything-Everywhere-All-At-Once-film-trailer.jpg){width=55%}
-
-</center>
+<center>![](https://www.langweiledich.net/wp-content/uploads/2021/12/Everything-Everywhere-All-At-Once-film-trailer.jpg){width="55%"}</center>
 
 ## Two Seminal Papers
 
 ::: {layout="[1,1]"}
-
 ![](img/steegen.png)
 
 ![](img/simonsohn.png)
-
 :::
-
 
 ## Geneology of the Approach
 
-- Long tradition of considering robustness to alternative specifications in the social sciences
+-   Long tradition of considering robustness to alternative specifications in the social sciences
 
-- Economics and Political science: reporting regression results in tables in which each column reports a different specification
+-   Economics and Political science: reporting regression results in tables in which each column reports a different specification
 
-- Robustness tests: examining how certain "core" regression coefficient estimates behave when the regression specification is modified by adding or removing regressors (usually ~1-10 alternative models reported in the appendix)
+-   Robustness tests: examining how certain "core" regression coefficient estimates behave when the regression specification is modified by adding or removing regressors (usually \~1-10 alternative models reported in the appendix)
 
-- Multiverse (MA) or specification curve analysis (SCA) can be regarded as extension and formalization of these approaches
+-   Multiverse (MA) or specification curve analysis (SCA) can be regarded as extension and formalization of these approaches
 
 <br>
 
-<span style="font-size: medium">Simonsohn et al., 2020</span>
+[Simonsohn et al., 2020]{style="font-size: medium"}
 
 ## The problem
 
-- Multiverse analysis acknowledges that data are actively shaped during the transformation from raw data to analyzable form
+-   Multiverse analysis acknowledges that data are actively shaped during the transformation from raw data to analyzable form
 
-- Researchers often apply multiple processing steps during data preparation
+-   Researchers often apply multiple processing steps during data preparation
 
-- These steps involve numerous "researcher's degrees of freedom", offering various, alternative options at each stage
+-   These steps involve numerous "researcher's degrees of freedom", offering various, alternative options at each stage
 
-- Raw data don't yield a single analyzable dataset, instead they generate multiple versions based on the choices made — a data multiverse!
+-   Raw data don't yield a single analyzable dataset, instead they generate multiple versions based on the choices made --- a data multiverse!
 
-- Each dataset in this multiverse can produce different statistical outcomes - a statistical multiverse!
+-   Each dataset in this multiverse can produce different statistical outcomes - a statistical multiverse!
 
 <br>
 
-<span style="font-size: medium;">Steegen et al., 2016</span>
-
+[Steegen et al., 2016]{style="font-size: medium;"}
 
 ## A Universe of Specifications
 
@@ -579,142 +484,119 @@ tribble(
 
 ## A formal representation of the problem
 
-Let’s consider a relationship between variables $x$ and $y$, in a context in which other variables, $Z$, may influence the relationship: 
+Let's consider a relationship between variables $x$ and $y$, in a context in which other variables, $Z$, may influence the relationship:
 
 <br><br>
 
-<center>
-
-$y = F(x,Z) + \epsilon$   
-
-</center>
+<center>$y = F(x,Z) + \epsilon$</center>
 
 <br><br>
 
 We are faced with the following practical challenges:
 
-- $x$ and $y$ are often imprecisely defined latent variables
-- the set of moderators and confounders in $Z$ are often not fully known ex ante
-- $Z$ also contains imprecisely defined latent variables
-- the functional form $F()$ is not known
+-   $x$ and $y$ are often imprecisely defined latent variables
+-   the set of moderators and confounders in $Z$ are often not fully known ex ante
+-   $Z$ also contains imprecisely defined latent variables
+-   the functional form $F()$ is not known
 
 ## A formal representation of the problem
 
 To study $y = F(x,Z)$, we must operationalize the underlying constructs. We usually approximate this relationship with a specification from a set of operationalizations: <br><br>
 
-<center>
-$y_{k_y} = F_{k_F}(x_{k_x}, Z_{k_Z})$   
-</center>
+<center>$y_{k_y} = F_{k_F}(x_{k_x}, Z_{k_Z})$</center>
 
-<br><br>
-where $k_y$, $k_F$, $k_x$ and $k_Z$ are indices for single operationalizations of the respective constructs. 
+<br><br> where $k_y$, $k_F$, $k_x$ and $k_Z$ are indices for single operationalizations of the respective constructs.
 
-For example $y_1$ may operationalize ‘well-being’ with life satisfaction, while $y_2$ with reversed depression.
+For example $y_1$ may operationalize 'well-being' with life satisfaction, while $y_2$ with reversed depression.
 
 <br>
 
-<span style="font-size: medium;">Simonsohn et al., 2020</span>
-
+[Simonsohn et al., 2020]{style="font-size: medium;"}
 
 ## The number of reasonable specifications
 
 For each construct there are multiple statistically valid, theoretically justified and non-redundant operationalizations. Their combination leads to what we refer to as the set of reasonable specifications.
 
-Designating the total number of valid operationalizations for each construct with $n_y$, $n_x$, $n_Z$ and $n_F$, the total number of reasonable specifications available to study $y = F(x,Z)$ is:
-<br><br>
+Designating the total number of valid operationalizations for each construct with $n_y$, $n_x$, $n_Z$ and $n_F$, the total number of reasonable specifications available to study $y = F(x,Z)$ is: <br><br>
 
-<center>
-$N = n_x × n_y × n_Z × n_F$
-</center>
+<center>$N = n_x × n_y × n_Z × n_F$</center>
 
-![](img/specs1.png){width=20%}
-<br>
-<span style="font-size: medium;">Simonsohn et al., 2020</span>
-
+![](img/specs1.png){width="20%"} <br> [Simonsohn et al., 2020]{style="font-size: medium;"}
 
 ## Sampling specifications
 
-- Let $\Pi$ be this set of $N$ reasonable specifications, and $\pi$ be the subset of specifications reported in a paper 
+-   Let $\Pi$ be this set of $N$ reasonable specifications, and $\pi$ be the subset of specifications reported in a paper
 
-- $\pi$ can be regarded as a sample of $\Pi$ 
+-   $\pi$ can be regarded as a sample of $\Pi$
 
-- Any given $y_{k_y} = F_{k_F}(x_{k_x}, Z_{k_Z})$ is considered a valid proxy for $y = F(x,Z)$ and therefore so is the full set of all such proxies $\Pi$. 
+-   Any given $y_{k_y} = F_{k_F}(x_{k_x}, Z_{k_Z})$ is considered a valid proxy for $y = F(x,Z)$ and therefore so is the full set of all such proxies $\Pi$.
 
-- A sufficiently large, random and independently drawn sample of $\Pi$ should lead to a reasonable estimate of the model of interest
+-   A sufficiently large, random and independently drawn sample of $\Pi$ should lead to a reasonable estimate of the model of interest
 
-- The problem is that $\pi$, the sample of specifications reported in a paper, has usually none of these three properties (i.e., before specification curve analysis)
+-   The problem is that $\pi$, the sample of specifications reported in a paper, has usually none of these three properties (i.e., before specification curve analysis)
 
 <br>
 
-<span style="font-size: medium;">Simonsohn et al., 2020</span>
+[Simonsohn et al., 2020]{style="font-size: medium;"}
 
 ## How SCA may solve the problem
 
+-   It allows to systematically generate a much larger $\pi$, where hundreds or even thousands of specifications are reported
 
-- It allows to systematically generate a much larger $\pi$, where hundreds or even thousands of specifications are reported
+-   It makes transparent the existence of noise, and allows to determine its nature, i.e., which operationalization decisions are consequential and which are not
 
-- It makes transparent the existence of noise, and allows to determine its nature, i.e., which operationalization decisions are consequential and which are not
+-   It generates a $\pi$ with fewer arbitrary inclusion decisions, and thus more closely approximates a random sample of $\Pi$
 
-- It generates a $\pi$ with fewer arbitrary inclusion decisions, and thus more closely approximates a random sample of $\Pi$
-
-- Yet it may also inflate the number of specifications and thus hide true effects of interest (more on that later!)
+-   Yet it may also inflate the number of specifications and thus hide true effects of interest (more on that later!)
 
 <br>
 
-<span style="font-size: medium;">Simonsohn et al., 2020</span>
+[Simonsohn et al., 2020]{style="font-size: medium;"}
 
 ## General Procedure
 
 **1. Define the set of reasonable specifications to estimate**
 
-- Differentiating types of decisions (type-E-, type-N-, type-U-decisions)
-- Reducing redundancy
+-   Differentiating types of decisions (type-E-, type-N-, type-U-decisions)
+-   Reducing redundancy
 
 **2. Estimate all specifications**
 
-- Run all models (i.e., with all specifications)
-- Visualize specification curve and the influence of different choices
+-   Run all models (i.e., with all specifications)
+-   Visualize specification curve and the influence of different choices
 
 **3. Conduct joint statistical tests using an inferential specification curve**
 
-- If specifications are truly non-redundant and valid, we can technically run inference tests
-- A type of bootstrapping approach where the true effect is fixed to zero
+-   If specifications are truly non-redundant and valid, we can technically run inference tests
+-   A type of bootstrapping approach where the true effect is fixed to zero
 
 <br>
 
-<span style="font-size: medium;">Simonsohn et al., 2020</span>
+[Simonsohn et al., 2020]{style="font-size: medium;"}
 
 ## Specification curve analysis with `specr`
 
+::: columns
+::: {.column width="80%"}
+-   R Package (currently Version 1.0.0 on CRAN, 1.0.1 on github)
 
-:::: {.columns}
+-   Versatile framework for conduction multiverse/specification curve analysis with R
 
-::: {.column width=80%}
+-   Based around the "mapping" approach implemented in `purrr`
 
-- R Package (currently Version 1.0.0 on CRAN, 1.0.1 on github)
+-   Ties nicely into the `tidyverse`
 
-- Versatile framework for conduction multiverse/specification curve analysis with R
-
-- Based around the "mapping" approach implemented in `purrr` 
-
-- Ties nicely into the `tidyverse`
-
-- Active and continuous development
-
-
+-   Active and continuous development
 :::
 
-::: {.column width=20%}
-
+::: {.column width="20%"}
 ![](https://masurp.github.io/specr/reference/figures/specr_logo.png)
 :::
-
-::::
+:::
 
 ## The example data
 
-
-For this example, we are going to use a synthetic data set that includes variables that allow to assess the relationship between media use and well-being: 
+For this example, we are going to use a synthetic data set that includes variables that allow to assess the relationship between media use and well-being:
 
 ```{r}
 #| echo: true
@@ -733,7 +615,6 @@ d %>%
   select(age, gender, depression, 
          self_esteem, sns_use) 
 ```
-
 
 ## Preparations
 
@@ -762,11 +643,9 @@ d %>%
   select(n, mean, sd)
 ```
 
+-   Technically, specification curve analysis does not necessarily require standardization of the variables
 
-- Technically, specification curve analysis does not necessarily require standardization of the variables
-
-- Yet, as the goal is often comparison of outcome estimates, it mostly makes sense to standardize the variables before the computation
-
+-   Yet, as the goal is often comparison of outcome estimates, it mostly makes sense to standardize the variables before the computation
 
 ## Setting up reasonable specifications
 
@@ -778,17 +657,15 @@ The set of reasonable specifications can be generated by:
 
 **2.** Listing all the reasonable alternative ways a researcher may make those decisions
 
-**3.** Generating the exhaustive combination of decisions, eliminating combinations that are invalid or redundant. 
+**3.** Generating the exhaustive combination of decisions, eliminating combinations that are invalid or redundant.
 
 <br>
 
-::: {.incremental}
-
+::: incremental
 If the resulting set is too large, then in the next step (estimation) one can randomly draw from them to create specification curves
-
 :::
 
-## Setting up specifications {auto-animate=true}
+## Setting up specifications {auto-animate="true"}
 
 ```{r, R.options = list(width = 120)}
 #| echo: true
@@ -804,7 +681,7 @@ specs <- setup(data = d,
 summary(specs)
 ```
 
-## Setting up specifications {auto-animate=true}
+## Setting up specifications {auto-animate="true"}
 
 ```{r, R.options = list(width = 120)}
 #| echo: true
@@ -821,8 +698,7 @@ specs <- setup(data = d,
 summary(specs)
 ```
 
-
-## Setting up specifications {auto-animate=true}
+## Setting up specifications {auto-animate="true"}
 
 ```{r, R.options = list(width = 120)}
 #| echo: true
@@ -840,7 +716,6 @@ specs <- setup(data = d,
 summary(specs, rows = 4)
 ```
 
-
 ## Assessing the garden of forking paths
 
 ```{r}
@@ -851,7 +726,6 @@ summary(specs, rows = 4)
 #| class-output: output
 plot(specs)
 ```
-
 
 ## Running the analyses
 
@@ -866,7 +740,6 @@ results <- specr(specs)
 summary(results)
 ```
 
-
 ## Typical Visualization
 
 ```{r}
@@ -878,7 +751,7 @@ summary(results)
 plot(results)
 ```
 
-## Basic descriptive analysis {auto-animate=true}
+## Basic descriptive analysis {auto-animate="true"}
 
 Basic descriptive summary of the entire specification curve:
 
@@ -892,8 +765,7 @@ summary(results,
         type = "curve")
 ```
 
-
-## Basic descriptive analysis {auto-animate=true}
+## Basic descriptive analysis {auto-animate="true"}
 
 Descriptive summary per specific choices:
 
@@ -908,8 +780,7 @@ summary(results,
         group = c("x"))  # group analysis by choices
 ```
 
-
-## Basic descriptive analysis {auto-animate=true}
+## Basic descriptive analysis {auto-animate="true"}
 
 Descriptive summary with customized statistics:
 
@@ -928,9 +799,9 @@ summary(results,
 
 ## Decomposing the variance
 
-- We propose to further "decompose" the variance in the specification curve 
+-   We propose to further "decompose" the variance in the specification curve
 
-- We can treat the analysis as a factorial design in the resulting estimates are nested in the choices and compute intra-class correlation coefficients (ICC)
+-   We can treat the analysis as a factorial design in the resulting estimates are nested in the choices and compute intra-class correlation coefficients (ICC)
 
 ```{r}
 #| echo: true
@@ -943,12 +814,11 @@ summary(results,
 plot(results, type = "variance")
 ```
 
-
 ## Decomposing the variance
 
-- We propose to "decompose" the variance in the specification curve 
+-   We propose to "decompose" the variance in the specification curve
 
-- We can treat the analysis as a factorial design in the resulting estimates are nested in the choices and compute intra-class correlation coefficients (ICC)
+-   We can treat the analysis as a factorial design in the resulting estimates are nested in the choices and compute intra-class correlation coefficients (ICC)
 
 ```{r}
 #| echo: true
@@ -962,7 +832,6 @@ plot(results, type = "variance",
      formula = "estimate ~ 1 + (1|x) + (1|y) + (1|controls) + (1|subsets) + (1|x:y)")
 ```
 
-
 ## Alternative visualization
 
 ```{r}
@@ -975,36 +844,33 @@ plot(results, type = "boxplot")
 
 ```
 
-
 ## Inference tests
 
-- Only partially implemented in the `specr` development version
+-   Only partially implemented in the `specr` development version
 
-- Simonsohn et al. (2020) propose three test statistics:
+-   Simonsohn et al. (2020) propose three test statistics:
 
-| #  | Name  | Explanation |
-| - | --- | ----------- |
-| 1  | Extremity of median | Testing whether the median effect across all specifications is more extreme than would be expected if all specifications had a true effect of zero |
-| 2  | Share of significant results | Testing whether the share of specifications with statistically significant effects in the expected direction is more extreme than would be expected if all specifications had an effect of zero |
-| 3  | Aggregated p-value | Testing whether the aggregated z value associated with each p-value (for example, z = 1.96 for p = 0.05) is more extreme than would be expected if all specifications had a true effect of zero |
+| \#  | Name                         | Explanation                                                                                                                                                                                     |
+|-------------|-------------|----------------------------------------------|
+| 1   | Extremity of median          | Testing whether the median effect across all specifications is more extreme than would be expected if all specifications had a true effect of zero                                              |
+| 2   | Share of significant results | Testing whether the share of specifications with statistically significant effects in the expected direction is more extreme than would be expected if all specifications had an effect of zero |
+| 3   | Aggregated p-value           | Testing whether the aggregated z value associated with each p-value (for example, z = 1.96 for p = 0.05) is more extreme than would be expected if all specifications had a true effect of zero |
 
 ## Computing the test statistics
 
-- Generating distributions for these test statistics under the null hypothesis isn't feasible analytically, but we can create these distributions through resampling under the null hypothesis
+-   Generating distributions for these test statistics under the null hypothesis isn't feasible analytically, but we can create these distributions through resampling under the null hypothesis
 
-- This process entails adjusting the observed data to ensure a known true null hypothesis and then randomly sampling from the modified data
+-   This process entails adjusting the observed data to ensure a known true null hypothesis and then randomly sampling from the modified data
 
-- The test statistic is then computed on each of these samples
+-   The test statistic is then computed on each of these samples
 
 <br>
 
-::: {.incremental}
-
-1. Generate K different dependent variables under the null: $y_k* = y_k − b_k * x_k$ 
-2. Draw at random, and with replacement, $N$ rows from this matrix, using the same drawn rows of data for all $K$ specifications.
-3. Estimate the $K$ specifications on the drawn data
-4. Repeat steps 3 and 4 a large number of times (e.g., 500 or 1,000).
-
+::: incremental
+1.  Generate K different dependent variables under the null: $y_k* = y_k − b_k * x_k$
+2.  Draw at random, and with replacement, $N$ rows from this matrix, using the same drawn rows of data for all $K$ specifications.
+3.  Estimate the $K$ specifications on the drawn data
+4.  Repeat steps 3 and 4 a large number of times (e.g., 500 or 1,000).
 :::
 
 ## Resampling under-the-null
@@ -1045,12 +911,11 @@ boot_results <- boot_null(results, specs,
 boot_results
 ```
 
-
 ## Joint statistical tests
 
-- For each bootstrapped sample we now have K estimates, one for each specification
+-   For each bootstrapped sample we now have K estimates, one for each specification
 
-- Now we compute what percentage of the resampled specification curves (for example, of the 10 resamples) exhibits an overall test statistic that is at least as extreme as that observed in the real data
+-   Now we compute what percentage of the resampled specification curves (for example, of the 10 resamples) exhibits an overall test statistic that is at least as extreme as that observed in the real data
 
 ```{r}
 #| echo: true
@@ -1063,18 +928,15 @@ boot_results
 summary(boot_results)
 ```
 
-::: {.incremental}
+::: incremental
+-   Test statistic 1: As we can see, a median 0.06 across all specification is more extreme than would be expected if all specification had a true effect of zero: *p* \< .001
 
-- Test statistic 1: As we can see, a median 0.06 across all specification is more extreme than would be expected if all specification had a true effect of zero: _p_ < .001
-
-- Test statistic 2: The share of specifications that obtain a statistically significant effect in the predicted direction is more extreme that would be expected if all specification had an effect of zero: 24 / 36, (66.7%, _p_ < .001).
-
+-   Test statistic 2: The share of specifications that obtain a statistically significant effect in the predicted direction is more extreme that would be expected if all specification had an effect of zero: 24 / 36, (66.7%, *p* \< .001).
 :::
 
 ## Observed vs. under-the-null curve
 
-- We can also plot the actual specification curve on top of the distribution of resamples under-the-null (e.g., the 2.5%, 50% and 97.5% quantiles) to visually inspect the extremity of the observed results
-
+-   We can also plot the actual specification curve on top of the distribution of resamples under-the-null (e.g., the 2.5%, 50% and 97.5% quantiles) to visually inspect the extremity of the observed results
 
 ```{r}
 #| echo: true
@@ -1089,90 +951,75 @@ plot(boot_results)
 
 # Arbitrary Decisions {.centered background-color="steelblue"}
 
-<center>
-![](https://taylorholmes.com/wp-content/uploads/2018/08/mr-nobody-movie-explained-1.png){width=65%}
-
-</center>
+<center>![](https://taylorholmes.com/wp-content/uploads/2018/08/mr-nobody-movie-explained-1.png){width="65%"}</center>
 
 ## Current practices as cause for concern?
 
-:::: {.columns}
+::: columns
+::: {.column width="50%"}
+-   The central notion of these methods is that the alternatives included in the multiverse are "arbitrary" or equally "reasonable"
 
-::: {.column width=50%}
+-   Little guidance or consensus on how to evaluate arbitrariness
 
-- The central notion of these methods is that the alternatives included in the multiverse are "arbitrary" or equally "reasonable"
-
-- Little guidance or consensus on how to evaluate arbitrariness
-
-- No consideration of the potential pitfalls of multiverse-style methods
-
+-   No consideration of the potential pitfalls of multiverse-style methods
 :::
 
-::: {.column width=50%}
-
+::: {.column width="50%"}
 ![](img/delgiudice.png)
 :::
+:::
 
-::::
 ## Different types of choices/decisions
 
-
-| Type  | Principle      | Description      | Example         |
-|----|--------|-----------------------|-----------------------|
-| **E** | Principled Equivalence | evidence and conceptual considerations may indicate that alternative analyses are effectively equivalent | Alternative measures with comparable validity and reliability; arbitrary thresholds for outliers |
+| Type  | Principle                  | Description                                                                                                                                             | Example                                                                                                              |
+|-------------|-------------|-----------------------|-----------------------|
+| **E** | Principled Equivalence     | evidence and conceptual considerations may indicate that alternative analyses are effectively equivalent                                                | Alternative measures with comparable validity and reliability; arbitrary thresholds for outliers                     |
 | **N** | Principled Non-Equivalence | available evidence or considerations support the conclusion that alternative specifications are not equivalent, and some are objectively more justified | Theoretically plausible subsets; different types of measures; inclusion of theoretically plausible control variables |
-| **U** | Uncertainty | There are not compelling reasons to expect equivalence or non-equivalence | Any of the above, when available evidence does not suggest that one is better than the other or equivalent |
-
+| **U** | Uncertainty                | There are not compelling reasons to expect equivalence or non-equivalence                                                                               | Any of the above, when available evidence does not suggest that one is better than the other or equivalent           |
 
 ## What choices are "ok" to include?
 
 ### Alternative 1: Obtaining robust estimates of the effect of interest
 
-- Understanding how arbitrary choices affect the results
-- Confirmatory in nature
-- Only type E decision can be included
-- Inference tests can be done (step 3)
+-   Understanding how arbitrary choices affect the results
+-   Confirmatory in nature
+-   Only type E decision can be included
+-   Inference tests can be done (step 3)
 
 <br>
 
-### Alternative 2: Exposing the impact of hidden degrees of freedom 
+### Alternative 2: Exposing the impact of hidden degrees of freedom
 
-- Understanding how different conceptual and analytical choices affect the results
-- Exploratory in nature
-- All types of decisions, but particularly type U decision may be included
-- No inference tests, but descriptive analyses of differences
-
+-   Understanding how different conceptual and analytical choices affect the results
+-   Exploratory in nature
+-   All types of decisions, but particularly type U decision may be included
+-   No inference tests, but descriptive analyses of differences
 
 ## Alternative 1 vs. 2 (Masur & Ranzini, 2023)
 
 ![](img/spec_final.png)
 
-
 # R: Exercise II {.centered background-color="steelblue"}
-
 
 # A Mass of Poorly Justified Alternatives {.centered background-color="steelblue"}
 
-<center>
-![](https://shhsaccolade.com/wp-content/uploads/2020/03/Netflix-screen-900x507.jpg){width=65%}
-</center>
+<center>![](https://shhsaccolade.com/wp-content/uploads/2020/03/Netflix-screen-900x507.jpg){width="65%"}</center>
 
 ## Dangers and pitfalls
 
-- The main danger of multiverse-style methods lies in their potential for combinatorial explosion
+-   The main danger of multiverse-style methods lies in their potential for combinatorial explosion
 
-- Just a few choices considered arbitrary can lead to a vast multiverse, overshadowing reasonable effect estimates with unjustified alternatives.
+-   Just a few choices considered arbitrary can lead to a vast multiverse, overshadowing reasonable effect estimates with unjustified alternatives.
 
-    - A single decision with two options doubles the number of specifications
-    - Five binary decisions expand the multiverse by 32 times
-    - If one option is consistently justifiable in each case, justified choices represent only 3% of the entire multiverse
-
+    -   A single decision with two options doubles the number of specifications
+    -   Five binary decisions expand the multiverse by 32 times
+    -   If one option is consistently justifiable in each case, justified choices represent only 3% of the entire multiverse
 
 <br>
 
-<span style="font-size: medium;">Del Giudice & Gangestad, 2021</span>
+[Del Giudice & Gangestad, 2021]{style="font-size: medium;"}
 
-## Combinatorial Explosion {auto-animate=true}
+## Combinatorial Explosion {auto-animate="true"}
 
 ```{r}
 #| echo: true
@@ -1190,8 +1037,7 @@ results1 <- specr(specs1)
 plot(results1, type = "curve")
 ```
 
-
-## Combinatorial Explosion {auto-animate=true}
+## Combinatorial Explosion {auto-animate="true"}
 
 ```{r}
 #| echo: true
@@ -1210,7 +1056,7 @@ results2 <- specr(specs2)
 plot(results2, type = "curve")
 ```
 
-## Combinatorial Explosion {auto-animate=true}
+## Combinatorial Explosion {auto-animate="true"}
 
 ```{r}
 #| echo: true
@@ -1230,7 +1076,7 @@ results3 <- specr(specs3)
 plot(results3, type = "curve")
 ```
 
-## Combinatorial Explosion {auto-animate=true}
+## Combinatorial Explosion {auto-animate="true"}
 
 ```{r}
 #| echo: true
@@ -1259,157 +1105,122 @@ plot(results4, type = "curve")
 plot(results1, type = "curve")
 ```
 
-
 ```{r, echo = F}
 #| fig.height: 2.5
 #| fig.width: 10
 plot(results4, type = "curve")
 ```
 
-
 ## Comparison of the variance decomposition
 
-
-:::: {.columns}
-
-::: {.column width=50%}
+::: columns
+::: {.column width="50%"}
 ```{r, echo = F}
 #| include: true
 #| code-line-numbers: true
 #| class-output: output
 plot(results2, type = "variance")
 ```
-
 :::
 
-::: {.column width=50%}
-
+::: {.column width="50%"}
 ```{r, echo = F}
 #| include: true
 #| code-line-numbers: true
 #| class-output: output
 plot(results4, type = "variance")
 ```
-
 :::
-
-::::
+:::
 
 ## What exactly is the problem?
 
-:::: {.columns}
+::: columns
+::: {.column width="50%"}
+-   The explosion of unjustified specifications, by expanding the analysis space, paradoxically amplifies the appearance of comprehensiveness and credibility within the multiverse
 
-::: {.column width=50%}
+-   Simultaneously, it significantly diminishes the informative portion of the multiverse
 
-
-- The explosion of unjustified specifications, by expanding the analysis space, paradoxically amplifies the appearance of comprehensiveness and credibility within the multiverse
-
-- Simultaneously, it significantly diminishes the informative portion of the multiverse
-
-- The vastness of the specification space can complicate the examination of results for potentially valuable insights.
-
+-   The vastness of the specification space can complicate the examination of results for potentially valuable insights.
 :::
 
-::: {.column width=50%}
-
+::: {.column width="50%"}
 ![](img/orben_nhb.webp)
-
-
 :::
-
-::::
+:::
 
 # R: Exercise III {.centered background-color="steelblue"}
 
 # Conclusion {.centered background-color="steelblue"}
 
 <center>
-![](https://img.buzzfeed.com/buzzfeed-static/complex/images/bdnkabiqxpxmxzmcaluz/spider-man-meme.jpg){width=65%}
 
+![](https://img.buzzfeed.com/buzzfeed-static/complex/images/bdnkabiqxpxmxzmcaluz/spider-man-meme.jpg){width="65%"}
 
 ## So what?
 
-:::: {.columns}
+::: columns
+::: {.column width="60%"}
+-   It makes little sense to include in the multiverse a specification that, a priori, one would have dismissed as inferior to other specifications
 
-::: {.column width=60%}
+-   Researchers conducting a multiverse-style analysis should provide a clear rationale for treating alternatives as equivalent (preregistration!)
 
-- It makes little sense to include in the multiverse a specification that, a priori, one would have dismissed as inferior to other specifications
+-   However, type U decisions will likely not be uncommon
 
-- Researchers conducting a multiverse-style analysis should provide a clear rationale for treating alternatives as equivalent (preregistration!)
-
-- However, type U decisions will likely not be uncommon
-
-- Strong call for systematic *exploratory* multiverse analysis!
-
+-   Strong call for systematic *exploratory* multiverse analysis!
 :::
 
-::: {.column width=40%}
->"Specification curve analysis will not end debates about what specifications should be run. specification curve analysis will instead facilitate those debates" (Simonsohn et al., 2020, p. 1209).
-
+::: {.column width="40%"}
+> "Specification curve analysis will not end debates about what specifications should be run. specification curve analysis will instead facilitate those debates" (Simonsohn et al., 2020, p. 1209).
 :::
-
-::::
-    
-    
+:::
 
 ## Want to learn more?
 
-:::: {.columns}
+::: columns
+::: {.column width="45%"}
+-   Visit the [website of specr](https://masurp.github.io/specr/)
 
-::: {.column width=45%}
+-   Several extra tutorials (e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation)
 
-- Visit the [website of specr](https://masurp.github.io/specr/)
-
-- Several extra tutorials (e.g., parallelization, incorporating SEM, multilevel, Bayesian estimation)
-
-- Continuous development (e.g. integration of inferential tests, speed improvements)
-
+-   Continuous development (e.g. integration of inferential tests, speed improvements)
 :::
 
-::: {.column width=55%}
-
+::: {.column width="55%"}
 ![](img/specr_website.png)
 :::
+:::
 
-::::
+##  {background-image="img/orion2.jpg"}
 
-## {background-image="img/orion2.jpg"}
+##  {background-image="img/orion4.jpg"}
 
-## {background-image="img/orion4.jpg"}
+##  {background-image="img/orion5.jpg"}
 
-## {background-image="img/orion5.jpg"}
-
-## {background-image="img/orion6.jpg"}
-
+##  {background-image="img/orion6.jpg"}
 
 # THE END {.centered background-color="black" transition="fade" transition-speed="slow"}
 
-<center>
-Thank you!
-</center>
-
+<center>Thank you!</center>
 
 ## References {.smaller}
 
+-   Del Giudice, M., & Gangestad, S. W. (2021). A traveler's guide to the multiverse: Promises, pitfalls, and a framework for the evaluation of analytic decisions. *Advances in Methods and Practices in Psychological Science, 4*(1). https://journals.sagepub.com/doi/abs/10.1177/2515245920954925
 
+-   Eisenberg, L. (2018). The tree of life. Retrieved from: https://www.evogeneao.com/en
 
-- Del Giudice, M., & Gangestad, S. W. (2021). A traveler’s guide to the multiverse: Promises, pitfalls, and a framework for the evaluation of analytic decisions. *Advances in Methods and Practices in Psychological Science, 4*(1). https://journals.sagepub.com/doi/abs/10.1177/2515245920954925 
+-   Masur, P. K. & Ranzini, G. (2023). *Privacy Calculus, Privacy Paradox, and Context Collapse: A Replication of Three Key Studies in Communication Privacy Research.* Manuscript in preparation.
 
-- Eisenberg, L. (2018). The tree of life. Retrieved from: https://www.evogeneao.com/en
+-   Masur, P. K. & Scharkow, M. (2020). specr: Conducting and Visualizing Specification Curve Analyses (R-package, version 1.0.0). https://CRAN.R-project.org/package=specr
 
-- Masur, P. K. & Ranzini, G. (2023). *Privacy Calculus, Privacy Paradox, and Context Collapse: A Replication of Three Key Studies in Communication Privacy Research.* Manuscript in preparation. 
+-   McElreath, R. (2023). *Statistical Rethinking 2023 - Horoscopes*. Lecture on Youtube: https://www.youtube.com/watch?v=qwF-st2NGTU&t=224s
 
-- Masur, P. K. & Scharkow, M. (2020). specr: Conducting and Visualizing Specification Curve Analyses (R-package, version 1.0.0). https://CRAN.R-project.org/package=specr 
+-   Orben, A., & Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. *Nature human behaviour, 3*(2), 173-182.
 
-- McElreath, R. (2023). *Statistical Rethinking 2023 - Horoscopes*. Lecture on Youtube: https://www.youtube.com/watch?v=qwF-st2NGTU&t=224s
+-   Silberzahn, R., Uhlmann, E. L., Martin, D. P., Anselmi, P., Aust, F., Awtrey, E., ... & Nosek, B. A. (2018). Many analysts, one data set: Making transparent how variations in analytic choices affect results. *Advances in Methods and Practices in Psychological Science, 1*(3), 337-356.
 
-- Orben, A., & Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. *Nature human behaviour, 3*(2), 173-182.
+-   Simmons, J. P., Nelson, L. D., & Simonsohn, U. (2011). False-positive psychology: Undisclosed flexibility in data collection and analysis allows presenting anything as significant. *Psychological science, 22*(11), 1359-1366.
 
-- Silberzahn, R., Uhlmann, E. L., Martin, D. P., Anselmi, P., Aust, F., Awtrey, E., ... & Nosek, B. A. (2018). Many analysts, one data set: Making transparent how variations in analytic choices affect results. *Advances in Methods and Practices in Psychological Science, 1*(3), 337-356.
+-   Simonsohn, U., Simmons, J.P. & Nelson, L.D. (2020). Specification curve analysis. *Nature Human Behaviour, 4*, 1208--1214. https://doi.org/10.1038/s41562-020-0912-z
 
-- Simmons, J. P., Nelson, L. D., & Simonsohn, U. (2011). False-positive psychology: Undisclosed flexibility in data collection and analysis allows presenting anything as significant. *Psychological science, 22*(11), 1359-1366.
-
-- Simonsohn, U., Simmons, J.P. & Nelson, L.D. (2020). Specification curve analysis. *Nature Human Behaviour, 4*, 1208–1214. https://doi.org/10.1038/s41562-020-0912-z
-
-- Steegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016). Increasing Transparency Through a Multiverse Analysis. *Perspectives on Psychological Science*, 11(5), 702-712. https://doi.org/10.1177/1745691616658637
-
+-   Steegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016). Increasing Transparency Through a Multiverse Analysis. *Perspectives on Psychological Science*, 11(5), 702-712. https://doi.org/10.1177/1745691616658637
