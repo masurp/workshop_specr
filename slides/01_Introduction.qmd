@@ -170,7 +170,7 @@ ggplot(NULL, aes(x, y)) +
 
 -   Often easier to defend an objective statistical procedure than an subjective choice that gives "meaning" to the procedure
 
-<br><br><br> [Intro taken and adapted from McElreath's (2023) "Statistical Rethinking" Lecture on Horoscopes]{style="font-size: 0.75em;"}
+<br><br><br> [Intro taken and adapted from McElreath's (2023) "Statistical Rethinking" Lecture on Horoscopes]{style="font-size: 0.55em;"}
 :::
 
 ::: {.column width="5%"}
@@ -202,7 +202,7 @@ ggplot(NULL, aes(x, y)) +
     -   Test Theory and Scale Development
     -   Bayesian Estimation
     -   Flexibility in Data Analysis
-    -   Computational Methods
+    -   Computational Methods and Machine Learning
 :::
 
 ::: {.column width="30%"}
@@ -214,7 +214,9 @@ ggplot(NULL, aes(x, y)) +
 
 ::: columns
 ::: {.column width="45%"}
-### Morning
+
+### Wednesday, 20th November
+
 
 ```{r, echo = F, message = F, warning = F}
 library(tidyverse)
@@ -222,14 +224,17 @@ library(knitr)
 library(kableExtra)
 tribble(
   ~Time, ~Topic,
-  "09:00 - 09:30" , "Statistical Fortune-Telling", 
-  "09:30 - 10:00" , "A Garden of Forking Paths",  
-  "10:00 - 11:00" , "R: Exercise I: Basic Mechanisms of Multiverse Analysis",
-  "11:00 - 12:00",  "Into the Multiverse"
-) %>% kable(format = "html", booktabs = T, align = "ll") %>%
+  "13:00 - 14:00" , "Statistical Fortune-Telling", 
+  "14:00 - 15:00" , "A Garden of Forking Paths",  
+  "15:30 - 16:30" , "R: Exercise I: Basic Mechanisms of Multiverse Analysis",
+  "16:30 - 17:00",  "Into the Multiverse",
+  "17:00 - 18:00",  "Q&A - Thinking through your own projects"
+) %>% kable(format = "markdown", booktabs = T, align = "ll") %>%
   column_spec(1, width = "6.0em") %>%
   column_spec(2, width = "25em")
 ```
+
+
 :::
 
 ::: {.column width="5%"}
@@ -331,6 +336,52 @@ tribble(
 :::
 :::
 
+
+## Many Analyst, Different Conclusions
+
+
+- Creativity in science often linked to hypothesis generation and research design development.
+
+- Data analysis is sometimes perceived as a mechanical, unimaginative process.
+
+- Analytic strategies are influenced by theory, assumptions, and subjective choice points.
+
+- Multiple reasonable (and unreasonable) data evaluation approaches exist.
+
+
+[Silberzahn et al. 2018]{style="font-size: medium"}
+
+
+
+## Many Analyst, Different Conclusions
+
+
+- Researchers may default to familiar methods rather than rationale-based strategies.
+
+- Peer reviewers rarely engage directly with the data, often accepting analytic strategies at face value.
+
+- Reanalyses and critiques of analytic strategies are rare, partly due to limited data sharing.
+
+- Scientific results may hinge on subjective decisions, leading to potential uncertainty.
+
+
+[Silberzahn et al. 2018]{style="font-size: medium"}
+
+
+
+## Results
+
+![](img/silberzahn2.jpeg)
+
+## Silberzahn et al: COnclusion
+
+- Research outcomes are influenced by subjective but justifiable analytic decisions, adding uncertainty beyond statistical power or questionable practices.
+
+- Subjectivity in research is inevitable but does not disconnect findings from reality; it highlights the role of decision-making.
+
+- Transparency in data, methods, and processes allows the scientific community to scrutinize, question, and test research decisions.
+
+
 ## Undisclosed flexibility
 
 ::: columns
@@ -343,23 +394,27 @@ tribble(
 :::
 :::
 
+## Method
+
+- Computer simulations were used to estimate how researcher degrees of freedom influence false-positive rates.
+
+- Four common degrees of freedom were analyzed: flexibility in dependent variables, sample size, covariates, and reporting subsets of conditions.
+
+- Simulations involved generating random samples and testing multiple analyses to observe how often p-values fell below significance levels.
+
+- Across 15,000 simulations, the probability of false positives was systematically quantified under various scenarios.
+
 ## Simulation-based findings
 
 ::: columns
-
 ::: {.column width="60%"}
-
 ![](img/simmons_table.png)
-
 :::
 
 ::: {.column width="40%"}
-
->As high as these estimates are, they may actually be conservative.  We  did  not  consider  many  other  degrees  of  freedom  that  researchers  commonly  use... (p. 1361)
-
+> As high as these estimates are, they may actually be conservative. We did not consider many other degrees of freedom that researchers commonly use... (p. 1361)
 :::
-
-::::
+:::
 
 ## What can we do?
 
@@ -379,6 +434,7 @@ tribble(
 
 -   **Specification curve** (SCA) or **multiverse analysis** (MA)
 -   Investigating all (theoretically plausible) models
+-   Requires justification for inclusions of choices/models
 :::
 
 ::: {.column width="5%"}
@@ -583,6 +639,8 @@ Designating the total number of valid operationalizations for each construct wit
 -   Versatile framework for conduction multiverse/specification curve analysis with R
 
 -   Based around the "mapping" approach implemented in `purrr`
+
+-   This also allows parallelization, which - depending how many specifications are estimated - is quite important to save computation time
 
 -   Ties nicely into the `tidyverse`
 
@@ -829,7 +887,8 @@ plot(results, type = "variance")
 #| fig.height: 2.5
 #| fig.width: 5
 plot(results, type = "variance", 
-     formula = "estimate ~ 1 + (1|x) + (1|y) + (1|controls) + (1|subsets) + (1|x:y)")
+     formula = "estimate ~ 1 + (1|x) + (1|y) + 
+               (1|controls) + (1|subsets) + (1|x:y)")
 ```
 
 ## Alternative visualization
@@ -844,6 +903,44 @@ plot(results, type = "boxplot")
 
 ```
 
+
+## Customized visualizations
+
+- Yet, bear in mind, the standard functions by `specr` only provide one perspective on the data
+
+- As the function `specr()` actually also creates a data frame with all specifications' results, we can also wrangle the data ourselves and create whatever plot we want
+
+
+```{r}
+#| echo: true
+#| include: true
+#| output-location: fragment
+#| code-line-numbers: true
+#| class-output: output
+head(results$data)
+```
+
+
+## Customized visualizations
+
+```{r}
+#| echo: true
+#| include: true
+#| output-location: fragment
+#| code-line-numbers: true
+#| class-output: output
+#| fig.height: 5
+#| fig.width: 8
+results$data |> 
+   ggplot(aes(x = x, y = estimate, ymin = conf.low, ymax = conf.high, color = controls)) +
+   geom_hline(yintercept = 0, linetype = "dashed", color = "grey")+
+   geom_pointrange(position = position_dodge(width = .9)) +
+   facet_grid(y ~ subsets) +
+   coord_flip() +
+   theme_bw()
+```
+
+
 ## Inference tests
 
 -   Only partially implemented in the `specr` development version
@@ -851,7 +948,7 @@ plot(results, type = "boxplot")
 -   Simonsohn et al. (2020) propose three test statistics:
 
 | \#  | Name                         | Explanation                                                                                                                                                                                     |
-|-------------|-------------|----------------------------------------------|
+|---------------|---------------|------------------------------------------|
 | 1   | Extremity of median          | Testing whether the median effect across all specifications is more extreme than would be expected if all specifications had a true effect of zero                                              |
 | 2   | Share of significant results | Testing whether the share of specifications with statistically significant effects in the expected direction is more extreme than would be expected if all specifications had an effect of zero |
 | 3   | Aggregated p-value           | Testing whether the aggregated z value associated with each p-value (for example, z = 1.96 for p = 0.05) is more extreme than would be expected if all specifications had a true effect of zero |
@@ -874,8 +971,14 @@ plot(results, type = "boxplot")
 :::
 
 ## Resampling under-the-null
+```{r, echo = F, eval = F}
+#save(boot_results, file = "slides/boot_results.RData")
+#load("boot_results.RData")
+```
 
-```{r}
+
+
+```{r, eval = F}
 #| echo: true
 #| include: true
 #| output-location: column-fragment
@@ -907,17 +1010,15 @@ results <- specr(specs)
 # Resampling under-the-null (rather 1,000 samples!)
 boot_results <- boot_null(results, specs, 
                           n_samples = 10) 
-# Check
-boot_results
 ```
 
 ## Joint statistical tests
 
 -   For each bootstrapped sample we now have K estimates, one for each specification
 
--   Now we compute what percentage of the resampled specification curves (for example, of the 10 resamples) exhibits an overall test statistic that is at least as extreme as that observed in the real data
+-   Now we compute what percentage of the resampled specification curves (for example, of the 16 resamples) exhibits an overall test statistic that is at least as extreme as that observed in the real data
 
-```{r}
+```{r, eval = F}
 #| echo: true
 #| include: true
 #| output-location: fragment
@@ -926,6 +1027,21 @@ boot_results
 #| fig.width: 10
 #| fig.height: 2.5
 summary(boot_results)
+```
+
+
+```{r, eval = F}
+#| echo: true
+#| include: true
+#| output-location: fragment
+#| code-line-numbers: true
+#| class-output: output
+> # A tibble: 3 × 3
+>   type           estimate p.value
+>   <chr>          <chr>    <chr>  
+> 1 median         0.06     < .001 
+> 2 share positive 24 / 36   < .001 
+> 3 share negative 0 / 36   < .001
 ```
 
 ::: incremental
@@ -938,7 +1054,7 @@ summary(boot_results)
 
 -   We can also plot the actual specification curve on top of the distribution of resamples under-the-null (e.g., the 2.5%, 50% and 97.5% quantiles) to visually inspect the extremity of the observed results
 
-```{r}
+```{r, eval = F}
 #| echo: true
 #| include: true
 #| output-location: fragment
@@ -948,6 +1064,22 @@ summary(boot_results)
 #| fig.height: 3.6
 plot(boot_results)
 ```
+
+![](img/inference.png)
+
+# Exercise: Thinking through your own projects {.centered background-color="steelblue"}
+
+## Format
+
+- Do you have a current project in which you took certain analytical decisions?
+
+- Try to map out the decisional path that you took to arrive at the "results
+
+- Consider decisional cross-roads on your paths, are there other alternative analytical choices that you could have taken?
+
+- Try to identify a "universe" of possible, yet still justifiable choices that would represent the a basis for a potential specification curve analyis
+
+- Discuss your choice table with your neighbour
 
 # Arbitrary Decisions {.centered background-color="steelblue"}
 
@@ -972,7 +1104,7 @@ plot(boot_results)
 ## Different types of choices/decisions
 
 | Type  | Principle                  | Description                                                                                                                                             | Example                                                                                                              |
-|-------------|-------------|-----------------------|-----------------------|
+|----------------|----------------|--------------------|--------------------|
 | **E** | Principled Equivalence     | evidence and conceptual considerations may indicate that alternative analyses are effectively equivalent                                                | Alternative measures with comparable validity and reliability; arbitrary thresholds for outliers                     |
 | **N** | Principled Non-Equivalence | available evidence or considerations support the conclusion that alternative specifications are not equivalent, and some are objectively more justified | Theoretically plausible subsets; different types of measures; inclusion of theoretically plausible control variables |
 | **U** | Uncertainty                | There are not compelling reasons to expect equivalence or non-equivalence                                                                               | Any of the above, when available evidence does not suggest that one is better than the other or equivalent           |
