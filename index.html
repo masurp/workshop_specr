@@ -13,7 +13,7 @@
 
 <title>Multiverse Analysis in R</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -32,6 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -141,11 +143,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -174,8 +180,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -183,16 +189,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -307,7 +306,7 @@ analyses can produce misleading results, potentially hiding meaningful
 effects within a mass of poorly justified alternatives.</p>
 <p>The workshop aims to equip participants with the knowledge to
 meaningfully apply multiverse/specification curve analyses to their own
-research. The 1-day workshop covers (1) a theoretical introduction to
+research. This 2-day workshop covers (1) a theoretical introduction to
 the concept of researcher’s degrees of freedom and the problem of
 undisclosed flexibility in data analyses, (2) an in-depth discussion of
 how multiverse approaches may help to establish better practices and
@@ -326,7 +325,7 @@ asset.</p>
 <p>All materials and slides can be found on this webpage: <a
 href="https://masurp.github.io/workshop_specr/"
 class="uri">https://masurp.github.io/workshop_specr/</a>.</p>
-<p>For this 1-day workshop, I expect you…</p>
+<p>For this 2-day workshop, I expect you…</p>
 <ol style="list-style-type: decimal">
 <li>…to have R and RStudio installed. If you haven’t done so yet, have a
 look at this <a
@@ -353,62 +352,108 @@ regression, logistic regression, multilevel linear regression).</p></li>
 <p><strong>Note:</strong> The workshop will NOT provide an introduction
 to R!</p>
 <p><br><br></p>
-<div id="morning" class="section level3">
-<h3>Morning</h3>
+<div id="tuesday-19th-november" class="section level3">
+<h3>Tuesday, 19th November</h3>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Time</th>
-<th align="left">Topic</th>
+<tr>
+<th style="text-align:left;">
+Time
+</th>
+<th style="text-align:left;">
+Topic
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">09:00 - 09:30</td>
-<td align="left">Statistical Fortune-Telling</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+13:00 - 14:00
+</td>
+<td style="text-align:left;width: 25em; ">
+Statistical Fortune-Telling
+</td>
 </tr>
-<tr class="even">
-<td align="left">09:30 - 10:00</td>
-<td align="left">A Garden of Forking Paths</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+14:00 - 15:00
+</td>
+<td style="text-align:left;width: 25em; ">
+A Garden of Forking Paths
+</td>
 </tr>
-<tr class="odd">
-<td align="left">10:00 - 11:00</td>
-<td align="left">R: Exercise I: Basic Mechanisms of Multiverse
-Analysis</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+15:30 - 16:30
+</td>
+<td style="text-align:left;width: 25em; ">
+R: Exercise I: Basic Mechanisms of Multiverse Analysis
+</td>
 </tr>
-<tr class="even">
-<td align="left">11:00 - 12:00</td>
-<td align="left">Into the Multiverse</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+16:30 - 17:00
+</td>
+<td style="text-align:left;width: 25em; ">
+Into the Multiverse
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+17:00 - 18:00
+</td>
+<td style="text-align:left;width: 25em; ">
+Q&amp;A - Thinking through your own projects
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="afternoon" class="section level3">
-<h3>Afternoon</h3>
+<div id="wednesday-20th-november" class="section level3">
+<h3>Wednesday, 20th November</h3>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Time</th>
-<th align="left">Topic</th>
+<tr>
+<th style="text-align:left;">
+Time
+</th>
+<th style="text-align:left;">
+Topic
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">13:00 - 13:45</td>
-<td align="left">Arbitrary Decisions</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+09:00 - 09:45
+</td>
+<td style="text-align:left;width: 25em; ">
+Arbitrary Decisions
+</td>
 </tr>
-<tr class="even">
-<td align="left">13:45 - 14:45</td>
-<td align="left">R: Exercise II: Multiverse Analysis with
-<code>specr</code></td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+09:45 - 10:45
+</td>
+<td style="text-align:left;width: 25em; ">
+R: Exercise II: Multiverse Analysis with <code>specr</code>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">14:45 - 15:30</td>
-<td align="left">A Mass of Poorly Justified Alternatives</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+11:15 - 12:00
+</td>
+<td style="text-align:left;width: 25em; ">
+A Mass of Poorly Justified Alternatives
+</td>
 </tr>
-<tr class="even">
-<td align="left">16:00 - 16:30</td>
-<td align="left">R: Exercise III: Advanced Specifications</td>
+<tr>
+<td style="text-align:left;width: 6.0em; ">
+12:00 - 13:00
+</td>
+<td style="text-align:left;width: 25em; ">
+R: Exercise III: Advanced Specifications
+</td>
 </tr>
 </tbody>
 </table>
