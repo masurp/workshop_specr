@@ -87,7 +87,7 @@ names(d)
 
 ## Creating variables
 
-For the purpose of this tutorial, we are going to create several mean indices that represent the concepts of interest. For the dependent variable (i.e. self-disclosure intentions), we are quicky going to check if the scale can be improved by deleting one or two items. 
+For the purpose of this tutorial, we are going to create several mean indices that represent the concepts of interest. For the dependent variable (i.e. self-disclosure intentions), we are quickly going to check if the scale can be improved by deleting one or two items. 
 
 ```{r}
 alpha(d %>% select(contains("ESL_BEH")))
@@ -248,7 +248,7 @@ We can secondly use the function `boot_null` to compute "under-the-null" data se
 set.seed(42)
 
 # Run bootstrapping (takes a couple of minutes)
-boot_models <- boot_null(results, specs, n_samples = 10) 
+boot_models <- boot_null(results, specs, n_samples = 3) 
 
 boot_models$boot_models %>%
   unnest(cols = c("fit")) %>%
